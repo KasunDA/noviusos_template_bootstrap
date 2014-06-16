@@ -17,6 +17,10 @@ foreach ($page->template_variation->tpvar_data as $key => $value) {
     {
         $config['principal']['background_style']='';
     }
+    else if($key == 'principal-background_fixed_display' && $value == '')
+    {
+        $config['principal']['background_fixed_display']='';
+    }
     else if ($value != '' && $value != null && strstr($key, '-display') == false) {
         if ($key == '_input_hidden_left') {
             $tab_temp = explode('||', $value);
@@ -180,7 +184,9 @@ foreach ($tab_skin as $key => $value) {
 <body id="principal"
     class="customisable title_page"
     <?= $config['principal']['background_image'] != '' ?
-        'style="background-image: url(\''.$config['principal']['background_image'].'\'); '.$config['principal']['background_style'].($config['principal']['background_fixed_display']? "background-attachment : fixed ; ":"").' " '
+        'style="background-image: url(\''.$config['principal']['background_image'].'\'); '
+        .$config['principal']['background_style']
+        .($config['principal']['background_fixed_display']? "background-attachment : fixed ; ":"").' " '
         : '' ?>>
 
 <div id="content" class="col-md-12" style="padding: 0">
