@@ -39,6 +39,6 @@ echo $result;
 ?>
     </div>
 
-    <div class="footer_text"><?=$config['footer']['content']?>
+    <div class="footer_text"><?=\Nos\Tools_Wysiwyg::parse($config['footer']['content'])?>
     </div>
 </div>

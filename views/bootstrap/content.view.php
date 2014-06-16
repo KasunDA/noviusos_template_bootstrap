@@ -71,7 +71,7 @@ if ($config['header']['fixed']) {
                      style="display: <?= $config['jumbotron']['display'] ? 'block' : 'none' ?>">
                     <div class="container">
                         <h1><?= $config['jumbotron']['title'] ?></h1>
-                        <span><?= $config['jumbotron']['content']?></span>
+                        <span><?= \Nos\Tools_Wysiwyg::parse($config['jumbotron']['content'])?></span>
                         <a href="<?=$config['jumbotron']['button']['link']?>"
                            class="btn btn-primary btn-lg"><?= $config['jumbotron']['button']['title'] ?></a>
                     </div>

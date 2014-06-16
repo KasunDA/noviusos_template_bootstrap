@@ -139,7 +139,7 @@ if (($sidebar_display == $position || $sidebar_display == 'both') || $dom_id) {
                                 <h3 class="panel-title"><?= $value['title'] ?></h3>
                             </div>
                             <div class="panel-body">
-                                <?= $value['content'] ?>
+                                <?= \Nos\Tools_Wysiwyg::parse($value['content']) ?>
                             </div>
                         </div>
                         <?php
