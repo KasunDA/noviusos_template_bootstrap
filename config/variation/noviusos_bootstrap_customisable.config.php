@@ -709,8 +709,8 @@ return array(
                     'type' => 'select',
                     'options' => array(
                         'title' => __('Title only'),
-                        'both' => __('Image (logo) only'),
-                        'image' => __('Image'),
+                        'image' => __('Image (logo) only'),
+                        'both' => __('Both'),
                     ),
                 ),
             ),
@@ -1038,28 +1038,32 @@ return array(
                 'label' => __('Facebook link'),
                 'form' => array(
                     'type' => 'text',
-                    'data-target' => '#left-facebook a link'
+                    'data-target' => '#left-facebook a link',
+                    'placeholder' => "https://www.facebook.com/UserName"
                 ),
             ),
             'left-blocks-social-list-twitter-link' => array(
                 'label' => __('Twitter link'),
                 'form' => array(
                     'type' => 'text',
-                    'data-target' => '#left-twitter a link'
+                    'data-target' => '#left-twitter a link',
+                    'placeholder' => "https://twitter.com/UserName"
                 ),
             ),
             'left-blocks-social-list-google_plus-link' => array(
                 'label' => __('Google+ link'),
                 'form' => array(
                     'type' => 'text',
-                    'data-target' => '#left-google_plus a link'
+                    'data-target' => '#left-google_plus a link',
+                    'placeholder' => "https://plus.google.com/UserName"
                 ),
             ),
             'left-blocks-social-list-github-link' => array(
                 'label' => __('Github link'),
                 'form' => array(
                     'type' => 'text',
-                    'data-target' => '#left-github a link'
+                    'data-target' => '#left-github a link',
+                    'placeholder' => "https://github.com/UserName"
                 ),
             ),
 
@@ -1316,28 +1320,32 @@ return array(
                 'label' => __('Facebook link'),
                 'form' => array(
                     'type' => 'text',
-                    'data-target' => '#right-facebook a link'
+                    'data-target' => '#right-facebook a link',
+                    'placeholder' => "https://www.facebook.com/UserName"
                 ),
             ),
             'right-blocks-social-list-twitter-link' => array(
                 'label' => __('Twitter link'),
                 'form' => array(
                     'type' => 'text',
-                    'data-target' => '#right-twitter a link'
+                    'data-target' => '#right-twitter a link',
+                    'placeholder' => "https://twitter.com/UserName"
                 ),
             ),
             'right-blocks-social-list-google_plus-link' => array(
                 'label' => __('Google+ link'),
                 'form' => array(
                     'type' => 'text',
-                    'data-target' => '#right-google_plus a link'
+                    'data-target' => '#right-google_plus a link',
+                    'placeholder' => "https://plus.google.com/UserName"
                 ),
             ),
             'right-blocks-social-list-github-link' => array(
                 'label' => __('Github link'),
                 'form' => array(
                     'type' => 'text',
-                    'data-target' => '#right-github a link'
+                    'data-target' => '#right-github a link',
+                    'placeholder' => "https://github.com/UserName"
                 ),
             ),
 
