@@ -63,8 +63,8 @@ class Controller_Admin_Ajax extends \Controller
 
         if (!empty($media)) {
             $item = array(
-                'width' => $media->media_width,
-                'height' => $media->media_height,
+                'width' => \Input::get('width', $media->media_width),
+                'height' => \Input::get('height', $media->media_height),
                 'url' => $media->url(),
             );
         } else {
