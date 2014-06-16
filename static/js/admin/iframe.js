@@ -615,13 +615,13 @@ $(function () {
             else if (inputTarget.search(" link") != -1) {
                 $field = $(inputTarget.split(' link')[0]);
                 if ($input.val() == "") {
-                    $field.attr("href", "#");
+                    $field.attr("href", "");
                 } else {
                     $field.attr("href", $input.val());
                 }
 
                 $(".social > li > a ").each(function () {
-                    if ($(this).attr("href") != "#") {
+                    if ($(this).attr("href") != "") {
                         $(this).parent().show();
                     }
                     else {

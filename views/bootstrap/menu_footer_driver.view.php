@@ -12,10 +12,10 @@ $items = $menu->branch();
 
 if (count($items)) {
     ?>
-    <ul <?= ( isset($class) ? 'class="'.$class.'"' : '' )?> <?= isset($id) ? 'id="'.$id.'"' : '' ?>>
+    <ul <?= ( isset($class) ? 'class="'.$class.'"' : '' )?> <?= isset($id) ? 'id="'.$id.'"' : '' ?> style="display: table ; width : 100%">
     <?php
     foreach ($items as $item) {
-        echo '<li class="lvl0">', $item->html(array('class' => ''));
+        echo '<li class="lvl0" style="display: table-cell ; float : none">', $item->html(array('class' => ''));
         $subitems = $menu->branch($item);
         if (count($subitems)) {
             echo '<ul class="nav nav-pills nav-stacked" style="text-indent: 20px;">';

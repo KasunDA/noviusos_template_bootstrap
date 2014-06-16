@@ -83,7 +83,7 @@ if (($sidebar_display == $position || $sidebar_display == 'both') || $dom_id) {
                                 <ul class="social">
                         <?php
                         foreach ($value['list'] as $key_social => $value_social) {
-                            if ($value_social['link'] != '#' || $dom_id) {
+                            if ($value_social['link'] != '' || $dom_id) {
                                 if ($key_social == 'google_plus') {
                                     $icon = 'google-plus';
                                     $name = 'Google+';
@@ -93,7 +93,7 @@ if (($sidebar_display == $position || $sidebar_display == 'both') || $dom_id) {
                                 }
                                 ?>
                                 <li id="<?= $position ?>-<?= $key_social ?>"
-                                    <?= $value_social['link'] == "#" && $dom_id ? 'style="display: none;"' : '' ?>
+                                    <?= $value_social['link'] == "" && $dom_id ? 'style="display: none;"' : '' ?>
                                     ><a href="<?= $value_social['link'] ?>">
                                         <button class="btn btn-<?= $icon ?>">
                                             <i class="fa fa-<?= $icon ?>"></i> <span>| <?= $name ?>

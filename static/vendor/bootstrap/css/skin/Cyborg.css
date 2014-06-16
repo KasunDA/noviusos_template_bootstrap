@@ -6483,7 +6483,7 @@ textarea {
 .nav > li > div {
   position: relative;
   display: block;
-  padding: 10px 15px;
+  padding: 5px 15px;
   text-align: left;
   padding-bottom: 5px;
   padding-top: 5px;
@@ -6523,6 +6523,9 @@ textarea {
   .navbar-brand {
     padding: 0px;
   }
+}
+.nav.sidebar-menu li a {
+  padding: 5px 15px;
 }
 @media (max-width: 992px) {
   .non-priority iframe.twitter-timeline {

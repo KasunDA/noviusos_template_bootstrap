@@ -17,6 +17,33 @@ foreach ($page->template_variation->tpvar_data as $key => $value) {
     {
         $config['principal']['background_style']='';
     }
+    else if($key == 'principal-background_fixed_display' && $value == '')
+    {
+        $config['principal']['background_fixed_display']='';
+    }
+    elseif ($key == '_sidebar-display') {
+        switch($value) {
+            case 'left':
+                $config['left']['display'] = true;
+                $config['right']['display'] = false;
+                break;
+
+            case 'right':
+                $config['left']['display'] = false;
+                $config['right']['display'] = true;
+                break;
+
+            case 'both':
+                $config['left']['display'] = true;
+                $config['right']['display'] = true;
+                break;
+
+            case 'none':
+                $config['left']['display'] = false;
+                $config['right']['display'] = false;
+                break;
+        }
+    }
     else if ($value != '' && $value != null && strstr($key, '-display') == false) {
         if ($key == '_input_hidden_left') {
             $tab_temp = explode('||', $value);
@@ -53,28 +80,6 @@ foreach ($page->template_variation->tpvar_data as $key => $value) {
             }
             \Arr::set($config, 'right.blocks', array_merge($tab_droite, $tab_droite_old));
 
-        } elseif ($key == '_sidebar-display') {
-            switch($value) {
-                case 'left':
-                    $config['left']['display'] = true;
-                    $config['right']['display'] = false;
-                    break;
-
-                case 'right':
-                    $config['left']['display'] = false;
-                    $config['right']['display'] = true;
-                    break;
-
-                case 'both':
-                    $config['left']['display'] = true;
-                    $config['right']['display'] = true;
-                    break;
-
-                case 'none':
-                    $config['left']['display'] = false;
-                    $config['right']['display'] = false;
-                    break;
-            }
         } else {
             $key = str_replace('-', '.', $key);
             arr::set($config, $key, $value);
@@ -84,6 +89,7 @@ foreach ($page->template_variation->tpvar_data as $key => $value) {
         arr::set($config, $key, $value);
     }
 }
+
 if (!empty($page->template_variation->medias->background)) {
     $config['principal']['background_image'] = $page->template_variation->medias->background->url();
 }
@@ -180,7 +186,9 @@ foreach ($tab_skin as $key => $value) {
 <body id="principal"
     class="customisable title_page"
     <?= $config['principal']['background_image'] != '' ?
-        'style="background-image: url(\''.$config['principal']['background_image'].'\'); '.$config['principal']['background_style'].($config['principal']['background_fixed_display']? "background-attachment : fixed ; ":"").' " '
+        'style="background-image: url(\''.$config['principal']['background_image'].'\'); '
+        .$config['principal']['background_style']
+        .($config['principal']['background_fixed_display']? "background-attachment : fixed ; ":"").' " '
         : '' ?>>
 
 <div id="content" class="col-md-12" style="padding: 0">

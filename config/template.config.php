@@ -49,16 +49,17 @@ return array(
                         'display' => false, // option : true ,false
                         'list' => array(
                             'facebook' => array(
-                                'link' => '#',
+                                'link' => '',
                             ),
                             'twitter' => array(
-                                'link' => '#',
+                                'link' => '',
+
                             ),
                             'google_plus' => array(
-                                'link' => '#',
+                                'link' => '',
                             ),
                             'github' => array(
-                                'link' => '#',
+                                'link' => '',
                             ),
                         ),
                     ),
@@ -113,16 +114,20 @@ return array(
                         'display' => false, // option : true ,false
                         'list' => array(
                             'facebook' => array(
-                                'link' => '#',
+                                'link' => '',
+
                             ),
                             'twitter' => array(
-                                'link' => '#',
+                                'link' => '',
+
                             ),
                             'google_plus' => array(
-                                'link' => '#',
+                                'link' => '',
+
                             ),
                             'github' => array(
-                                'link' => '#',
+                                'link' => '',
+
                             ),
                         ),
                     ),
