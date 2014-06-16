@@ -21,6 +21,29 @@ foreach ($page->template_variation->tpvar_data as $key => $value) {
     {
         $config['principal']['background_fixed_display']='';
     }
+    elseif ($key == '_sidebar-display') {
+        switch($value) {
+            case 'left':
+                $config['left']['display'] = true;
+                $config['right']['display'] = false;
+                break;
+
+            case 'right':
+                $config['left']['display'] = false;
+                $config['right']['display'] = true;
+                break;
+
+            case 'both':
+                $config['left']['display'] = true;
+                $config['right']['display'] = true;
+                break;
+
+            case 'none':
+                $config['left']['display'] = false;
+                $config['right']['display'] = false;
+                break;
+        }
+    }
     else if ($value != '' && $value != null && strstr($key, '-display') == false) {
         if ($key == '_input_hidden_left') {
             $tab_temp = explode('||', $value);
@@ -57,28 +80,6 @@ foreach ($page->template_variation->tpvar_data as $key => $value) {
             }
             \Arr::set($config, 'right.blocks', array_merge($tab_droite, $tab_droite_old));
 
-        } elseif ($key == '_sidebar-display') {
-            switch($value) {
-                case 'left':
-                    $config['left']['display'] = true;
-                    $config['right']['display'] = false;
-                    break;
-
-                case 'right':
-                    $config['left']['display'] = false;
-                    $config['right']['display'] = true;
-                    break;
-
-                case 'both':
-                    $config['left']['display'] = true;
-                    $config['right']['display'] = true;
-                    break;
-
-                case 'none':
-                    $config['left']['display'] = false;
-                    $config['right']['display'] = false;
-                    break;
-            }
         } else {
             $key = str_replace('-', '.', $key);
             arr::set($config, $key, $value);
@@ -88,6 +89,7 @@ foreach ($page->template_variation->tpvar_data as $key => $value) {
         arr::set($config, $key, $value);
     }
 }
+
 if (!empty($page->template_variation->medias->background)) {
     $config['principal']['background_image'] = $page->template_variation->medias->background->url();
 }

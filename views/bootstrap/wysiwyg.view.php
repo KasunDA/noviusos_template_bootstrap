@@ -196,6 +196,7 @@ function cut_grid(&$tab_sub , $grid , $i = 0 )
             $size = $value["height"];
             $map = array_slice($grid , $count_ligne , $size );
             cut_grid($tab_sub["rows"][$key]["layout"] ,$map , $i+1);
+
             if($tab_sub["rows"][$key]["layout"] == null)
             {
                 $tab_sub["rows"][$key]["id"] = $map[0][0];
@@ -225,7 +226,13 @@ function cut_grid(&$tab_sub , $grid , $i = 0 )
             cut_grid($tab_sub["cols"][$key]["layout"] ,$map ,$i+1);
             if($tab_sub["cols"][$key]["layout"] == null)
             {
-                $tab_sub["cols"][$key]["id"] = $map[0][0];
+                if(is_array($map[0])){
+                    $tab_sub["cols"][$key]["id"] = $map[0][0];
+                }
+                else{
+                    $tab_sub["cols"][$key]["id"] = $map[0];
+                }
+
             }
             $count_colonne += $size;
 
@@ -256,9 +263,9 @@ function code_create($tab , $largeur , $longueur , &$str  , $wysiwyg){
            $largeur = $value["height"];
            if($value["layout"] == null)
            {
-               $str .= "\n<div class='div_layout ".calc_grid_column(($longueur/$longueur_cont)*100)."' style=''>".
+               $str .= "\n<div class='div_layout ".calc_grid_column(($longueur/$longueur_cont)*100)."' style='' data-val=".$value['id'].">".
                    (isset($wysiwyg["content".intval($value['id'])]) && intval($value['id']) != 0?
-                       $wysiwyg["content".intval($value['id'])] :
+                       $wysiwyg["content".$value['id']] :
                        ""
                    )."</div>";
            }
@@ -280,8 +287,8 @@ function code_create($tab , $largeur , $longueur , &$str  , $wysiwyg){
             if($value["layout"] == null)
             {
                 $str .= "\n\t <div class='div_layout ".calc_grid_column(($longueur/$longueur_cont)*100)."'
-                 style=''> ".( (isset($wysiwyg["content".intval($value['id'])]) && intval($value['id']) != 0 ?
-                        $wysiwyg["content".intval($value['id'])] :
+                 style='' data-val=".$value['id']."> ".( (isset($wysiwyg["content".$value['id']]) && intval($value['id']) != 0 ?
+                        $wysiwyg["content".$value['id']] :
                         ""
                     ))."</div>";
             }

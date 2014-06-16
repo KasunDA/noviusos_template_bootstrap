@@ -67,7 +67,7 @@ return array(
     },
     'rows' => function ($tpvar) {
         //$layout = $tpvar->tpvar_data['wysiwyg_layout'];
-        return 12;
+        return 1;
     },
     'layout' => function ($tpvar) {
         if(isset($tpvar->tpvar_data['wysiwyg_layout']) && $tpvar->tpvar_data['wysiwyg_layout'] != ""){

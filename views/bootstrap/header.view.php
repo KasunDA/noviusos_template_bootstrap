@@ -78,7 +78,7 @@ if ($config['header']['fixed']) {
 <div class="head_content <?= $style_fixed ?>">
     <nav class="navbar navbar-inverse " role="navigation">
 
-        <div class="navbar-header">
+        <div class="navbar-header" >
 
             <a class="navbar-brand" id="sitename"
                href="<?= \Nos\Tools_Url::context(\Nos\Nos::main_controller()->getPage()->get_context()) ?>"
@@ -109,7 +109,7 @@ if ($depth > 0) {
         </div>
 
     </nav>
-    <div id="header" class="nav-logo customisable title_header" style="top :<?=$top?> ; z-index: auto">
+    <div id="header" class="nav-logo customisable title_header" style="top :<?=$top?> ; z-index: auto ;">
         <a href="#" style="display: inline-block;">
             <?= $str_img ?>
             <div class="<?=$id_text?>">
