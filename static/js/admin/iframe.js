@@ -92,44 +92,20 @@ $(function () {
         return false;
     })
 
-    var wysiwyg_parser = function($target) {
-        $target.find('.nosEnhancer, .nosEnhancerInline').each(function() {
-            var $enhancer = $(this);
-            var enhancer_id = $enhancer.data('enhancer');
-            var data      = $.extend(true, {enhancer: enhancer_id}, $enhancer.data('config'));
-            $.ajax({
-                url: 'admin/noviusos_template_bootstrap/ajax/enhancer',
-                type: 'POST',
-                dataType: 'json',
-                data: data,
-                success: function(json) {
-                    $enhancer.html($.trim(json.preview));
-                },
-                error: function() {
-                    $enhancer.html('Error');
-                }
-            });
-        });
-
-        $target.find('img[src*="nos://"]').each(function() {
-            var $img = $(this);
-            var origSrc = $img.attr('src');
-            if (origSrc.substr(0, 6) == 'nos://') {
-                var media_id = origSrc.substr(12).split('/')[0];
-                if (media_id) {
-                    $.ajax({
-                        url: 'admin/noviusos_template_bootstrap/ajax/media/' + media_id,
-                        type: 'GET',
-                        dataType: 'json',
-                        data: {
-                            width : $img.attr('width'),
-                            heigth: $img.attr('heigth')
-                        },
-                        success: function(json) {
-                            $img.attr('src', json.url);
-                        }
-                    });
-                }
+    var wysiwyg_enhancer = function() {
+        var $enhancer = $(this);
+        var enhancer_id = $enhancer.data('enhancer');
+        var data      = $.extend(true, {enhancer: enhancer_id}, $enhancer.data('config'));
+        $.ajax({
+            url: 'admin/noviusos_template_bootstrap/ajax/enhancer',
+            type: 'POST',
+            dataType: 'json',
+            data: data,
+            success: function(json) {
+                $enhancer.html($.trim(json.preview));
+            },
+            error: function() {
+                $enhancer.html('Error');
             }
         });
     };
@@ -182,7 +158,9 @@ $(function () {
                         ed.save();
                         ed.remove();
                     }
-                    wysiwyg_parser($target.html($textarea.val()));
+                    $target.html($textarea.val())
+                        .find('.nosEnhancer, .nosEnhancerInline').each(wysiwyg_enhancer);
+
                 });
                 $div.hide().appendTo($parent);
                 $textareas.each(function () {
@@ -235,7 +213,7 @@ $(function () {
         });
     });
 
-    wysiwyg_parser($(document));
+    $(document).find('.nosEnhancer, .nosEnhancerInline').each(wysiwyg_enhancer);
 
     var $divSideBars = $parentWindowDom.find('[class*="template-e-side-"]').nosOnShow('one', function () {
         var $div = parentWindow$(this);

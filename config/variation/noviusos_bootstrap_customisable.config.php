@@ -770,7 +770,7 @@ return array(
                     'theme_advanced_toolbar_location' => 'top',
                 ),
                 'form' => array(
-                    'data-target' => '#jumbotron p'
+                    'data-target' => '#jumbotron span'
                 ),
             ),
             'jumbotron-button-title' => array(
