@@ -9,7 +9,7 @@
  */
 
 return array(
-    'name'    => 'Novius OS Custom template Bootstrap',
+    'name'    => 'Novius OS Bootstrap customisable template',
     'version' => '5.0 (Elche)',
     'provider' => array(
         'name' => 'Novius OS',
@@ -22,7 +22,7 @@ return array(
     'enhancers' => array(
     ),
     'templates' => array(
-        'noviusos_custom_template' => array(
+        'noviusos_bootstrap_customisable' => array(
             'file' => 'noviusos_template_bootstrap::common',
             'title' => 'Bootstrap customisable template',
             'cols' => 12,
