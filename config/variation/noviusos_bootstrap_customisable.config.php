@@ -24,20 +24,20 @@ return array(
 
         $config =  \Config::get('noviusos_template_bootstrap::template');
 
-        $array = Arr::flatten($config , '-');
+        $array = Arr::flatten($config, '-');
         $_input_hidden_left = '';
         $_input_hidden_right= '';
         $tab_left = \Config::get('noviusos_template_bootstrap::template.left.blocks');
         $tab_right = \Config::get('noviusos_template_bootstrap::template.right.blocks');
 
-        foreach($tab_left as $key => $value){
-            if($value['display'] == true){
+        foreach ($tab_left as $key => $value) {
+            if ($value['display'] == true) {
                 $_input_hidden_left .= 'left-blocks-'.$key.'-display||';
             }
         }
 
-        foreach($tab_right as $key => $value){
-            if($value['display'] == true){
+        foreach ($tab_right as $key => $value) {
+            if ($value['display'] == true) {
                 $_input_hidden_right .= 'right-blocks-'.$key."-display||";
             }
         }
@@ -51,14 +51,14 @@ return array(
         $array['_input_hidden_left'] = $_input_hidden_left;
         $temp = "";
 
-         for ($i = 0; $i < 12; $i++) {
-            for ( $j = 0; $j < 12; $j++) {
+        for ($i = 0; $i < 12; $i++) {
+            for ($j = 0; $j < 12; $j++) {
                 $temp .= "1 ";
-                }
-                $temp = substr( $temp, 0 , strlen($temp)-1);
-                $temp .= "|";
             }
-            $temp = substr( $temp, 0 , strlen($temp)-1);
+            $temp = substr($temp, 0, strlen($temp) - 1);
+            $temp .= "|";
+        }
+        $temp = substr($temp, 0, strlen($temp) - 1);
 
         $array['wysiwyg_layout'] = $temp;
 
@@ -70,23 +70,19 @@ return array(
         return 12;
     },
     'layout' => function ($tpvar) {
-        if(isset($tpvar->tpvar_data['wysiwyg_layout']) && $tpvar->tpvar_data['wysiwyg_layout'] != ""){
+        if (isset($tpvar->tpvar_data['wysiwyg_layout']) && $tpvar->tpvar_data['wysiwyg_layout'] != '') {
             $layout = $tpvar->tpvar_data['wysiwyg_layout'];
-            $tab = explode("|" , $layout);
+            $tab = explode('|', $layout);
             $tab_layout = array();
             $tab_done = array();
 
-            foreach($tab as $key => $value)
-            {
-                $tab[$key] = explode(" " ,$value);
+            foreach ($tab as $key => $value) {
+                $tab[$key] = explode(' ', $value);
             }
 
-             for($i = 0 ; $i < 12 ; $i++)
-             {
-                 for($j = 0 ; $j < 12 ; $j++)
-                 {
-                    if($tab[$i][$j] != 0 && !in_array($tab[$i][$j] ,$tab_done ))
-                    {
+            for ($i = 0; $i < 12; $i++) {
+                for ($j = 0; $j < 12; $j++) {
+                    if ($tab[$i][$j] != 0 && !in_array($tab[$i][$j], $tab_done)) {
                         $x = $i;
                         $y = $j;
                         $h = 0;
@@ -94,21 +90,22 @@ return array(
                         $val = $tab[$i][$j];
                         $tab_done []  = $val;
 
-                        while($x+$h < 12 && $tab[$x+$h][$y] == $val)
-                        {
+                        while ($x+$h < 12 && $tab[$x+$h][$y] == $val) {
                             $h++;
                         }
 
-                        while($y+$w < 12 &&  $tab[$x][$y+$w] == $val)
-                        {
+                        while ($y+$w < 12 &&  $tab[$x][$y+$w] == $val) {
                             $w++;
                         }
                         $tab_layout["content".$val] = $y.",".$x.",".$w.",".$h;
                     }
-                 }
-             }
+                }
+            }
             return $tab_layout;
         }
+        return array(
+            'content1' => '0,0,12,12',
+        );
     },
     'admin' => array(
         'layout' => array(
