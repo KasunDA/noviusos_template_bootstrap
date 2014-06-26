@@ -61,7 +61,6 @@ return array(
         $array['_input_hidden_left'] = $_input_hidden_left;
         $temp = "";
 
-<<<<<<< HEAD
         for ($i=0; $i<12; $i++) {
             for ($j = 0; $j < 12; $j++) {
                 $temp .= "1 ";
@@ -70,18 +69,7 @@ return array(
             $temp .= "|";
         }
         $temp = substr($temp, 0, strlen($temp)-1);
-=======
-        for ($i = 0; $i < 12; $i++) {
-            for ($j = 0; $j < 12; $j++) {
-                $temp .= "1 ";
-            }
-            $temp = substr($temp, 0, strlen($temp) - 1);
-            $temp .= "|";
-        }
-        $temp = substr($temp, 0, strlen($temp) - 1);
->>>>>>> 511f8629786c16863ea8447932f1e31e36ee5ac9
 
-        $array['wysiwyg_layout'] = $temp;
 
         return $array;
 
@@ -89,20 +77,12 @@ return array(
     'layout' => function ($tpvar) {
         if (isset($tpvar->tpvar_data['wysiwyg_layout']) && $tpvar->tpvar_data['wysiwyg_layout'] != '') {
             $layout = $tpvar->tpvar_data['wysiwyg_layout'];
-<<<<<<< HEAD
             $tab = explode("|", $layout);
-=======
-            $tab = explode('|', $layout);
->>>>>>> 511f8629786c16863ea8447932f1e31e36ee5ac9
             $tab_layout = array();
             $tab_done = array();
 
             foreach ($tab as $key => $value) {
-<<<<<<< HEAD
                 $tab[$key] = explode(" ", $value);
-=======
-                $tab[$key] = explode(' ', $value);
->>>>>>> 511f8629786c16863ea8447932f1e31e36ee5ac9
             }
 
             for ($i = 0; $i < 12; $i++) {
