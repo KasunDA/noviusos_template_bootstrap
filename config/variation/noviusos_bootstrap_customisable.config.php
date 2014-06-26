@@ -19,6 +19,8 @@ $height_wysiwyg = 350;
 
 \Config::load('noviusos_template_bootstrap::template', true);
 
+\Nos\I18n::current_dictionary('noviusos_template_bootstrap::common', 'nos::common');
+
 return array(
     'init' => function () {
 

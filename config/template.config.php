@@ -8,6 +8,8 @@
  * @link http://www.novius-os.org
  */
 
+\Nos\I18n::current_dictionary('noviusos_template_bootstrap::common', 'nos::common');
+
 return array(
     'option_bar' => 'y',
     'css_style' => '',

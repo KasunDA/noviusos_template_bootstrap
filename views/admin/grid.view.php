@@ -12,7 +12,10 @@ $data = array(
     'form_id' => $fieldset->form()->get_attribute('id'),
     'tpvar_id' => $item->tpvar_id,
 );
-$content = (string)View::forge($content['view'], $view_params + $content['params'], false);
+$content = (string) View::forge($content['view'], $view_params + $content['params'], false);
+
+\Nos\I18n::current_dictionary('noviusos_template_bootstrap::common', 'nos::common');
+
 ?>
 
 <script type="text/javascript">
