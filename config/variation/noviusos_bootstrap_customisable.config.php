@@ -8,13 +8,13 @@
  * @link http://www.novius-os.org
  */
 
-$uniqid = uniqid('template_e_');
+$uniqid = uniqid('template_bootstrap');
 
-$width_wysiwyg = "850px";
-$width_grid = "780px";
-$height_panel = "550";
-$width_image = "650px";
-$width_standard = "500px";
+$width_wysiwyg = '850px';
+$width_grid = '780px';
+$height_panel = '550';
+$width_image = '650px';
+$width_standard = '500px';
 $height_wysiwyg = 350;
 
 \Config::load('noviusos_template_bootstrap::template', true);
@@ -66,10 +66,6 @@ return array(
 
         return $array;
 
-    },
-    'rows' => function ($tpvar) {
-        //$layout = $tpvar->tpvar_data['wysiwyg_layout'];
-        return 12;
     },
     'layout' => function ($tpvar) {
         if (isset($tpvar->tpvar_data['wysiwyg_layout']) && $tpvar->tpvar_data['wysiwyg_layout'] != '') {
@@ -594,7 +590,6 @@ return array(
 
              'wysiwyg_layout' => array(
                 'form' => array(
-                    'label' => __(''),
                     'type' => 'hidden',
                 ),
             ),

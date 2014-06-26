@@ -37,9 +37,9 @@ $content = (string) View::forge($content['view'], $view_params + $content['param
     </div>
     <div class="template-e-grid" style="margin-top: 20px ;display: inline-block; vertical-align: top; ">
         <div id="div_option" style="position : relative ;display: inline-block;">
-            <button type="button" id="btn_ajout">Ajouter un élément</button>
-            <button type="button" id="btn_suppr">Supprimer</button>
-            <button type="button" id="btn_vider">Vider</button>
+            <button type="button" id="btn_ajout"><?= __('Add an element') ?></button>
+            <button type="button" id="btn_suppr"><?= __('Remove') ?></button>
+            <button type="button" id="btn_vider"><?= __('Empty') ?></button>
             <br><br>
         </div>
         <div id="div_grid" class="table" style ="">
@@ -77,8 +77,4 @@ $content = (string) View::forge($content['view'], $view_params + $content['param
         </div>
 
     </div>
-    <?php //1 1 1 1 2 2 2 2 3 3 3 3|4 4 4 4 4 4 4 4 4 4 4 4|5 5 5 5 5 5 6 6 6 6 6 6|7 7 7 7 7 7 7 7 7 7 7 7|8 8 8 8 8 8 9 9 9 9 9 9|8 8 8 8 8 8 10 10 10 10 10 10|11 11 11 11 11 11 11 11 11 11 11 11|12 12 12 12 13 13 13 13 14 14 14 14|15 15 15 16 16 16 17 17 17 18 18 18|19 19 19 19 19 19 19 19 19 19 19 19|20 20 20 20 20 20 20 20 21 21 21 21|23 23 23 23 22 22 22 22 22 22 22 22
-?>
-
-
 </div>
