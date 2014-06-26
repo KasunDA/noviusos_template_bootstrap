@@ -27,19 +27,13 @@ foreach ($temp_skin as $key => $value) {
 
 \Config::load('noviusos_template_bootstrap::template', true);
 
-<<<<<<< HEAD
-=======
 \Nos\I18n::current_dictionary('noviusos_template_bootstrap::common', 'nos::common');
->>>>>>> 511f8629786c16863ea8447932f1e31e36ee5ac9
+
 
 return array(
     'init' => function () {
 
         $config =  \Config::get('noviusos_template_bootstrap::template');
-<<<<<<< HEAD
-=======
-
->>>>>>> 511f8629786c16863ea8447932f1e31e36ee5ac9
         $array = Arr::flatten($config, '-');
         $_input_hidden_left = '';
         $_input_hidden_right= '';
