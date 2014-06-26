@@ -8,6 +8,8 @@
  * @link http://www.novius-os.org
  */
 
+\Nos\I18n::current_dictionary('noviusos_template_bootstrap::common', 'nos::common');
+
 $data = array(
     'form_id' => $fieldset->form()->get_attribute('id'),
     'tpvar_id' => $item->tpvar_id,

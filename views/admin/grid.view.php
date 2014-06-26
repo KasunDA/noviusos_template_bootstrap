@@ -12,7 +12,10 @@ $data = array(
     'form_id' => $fieldset->form()->get_attribute('id'),
     'tpvar_id' => $item->tpvar_id,
 );
-$content = (string)View::forge($content['view'], $view_params + $content['params'], false);
+$content = (string) View::forge($content['view'], $view_params + $content['params'], false);
+
+\Nos\I18n::current_dictionary('noviusos_template_bootstrap::common', 'nos::common');
+
 ?>
 
 <script type="text/javascript">
@@ -34,9 +37,9 @@ $content = (string)View::forge($content['view'], $view_params + $content['params
     </div>
     <div class="template-e-grid" style="margin-top: 20px ;display: inline-block; vertical-align: top; ">
         <div id="div_option" style="position : relative ;display: inline-block;">
-            <button type="button" id="btn_ajout">Ajouter un élément</button>
-            <button type="button" id="btn_suppr">Supprimer</button>
-            <button type="button" id="btn_vider">Vider</button>
+            <button type="button" id="btn_ajout"><?= __('Add an element') ?></button>
+            <button type="button" id="btn_suppr"><?= __('Remove') ?></button>
+            <button type="button" id="btn_vider"><?= __('Empty') ?></button>
             <br><br>
         </div>
         <div id="div_grid" class="table" style ="">
@@ -74,5 +77,4 @@ $content = (string)View::forge($content['view'], $view_params + $content['params
         </div>
 
     </div>
-
 </div>

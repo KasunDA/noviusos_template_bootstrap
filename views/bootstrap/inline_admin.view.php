@@ -7,8 +7,17 @@
  *             http://www.gnu.org/licenses/agpl-3.0.html
  * @link http://www.novius-os.org
  */
+
+\Nos\I18n::current_dictionary('noviusos_template_bootstrap::common', 'nos::common');
+
+$params = array(
+    'dom_id' => '#'.$dom_id,
+    'texts' => array(
+        'newPanel' => __('New Panel'),
+    ),
+);
 ?>
-<script type="text/javascript">
-    var dom_id = "#<?= $dom_id ?>" ;
-</script>
 <script type="text/javascript" src="static/apps/noviusos_template_bootstrap/js/admin/iframe.js"></script>
+<script type="text/javascript">
+    $.templateBootstrap(<?= \Format::forge($params)->to_json() ?>);
+</script>
