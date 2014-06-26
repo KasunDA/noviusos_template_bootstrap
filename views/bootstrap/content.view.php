@@ -8,7 +8,7 @@
  * @link http://www.novius-os.org
  */
 
-$iscmd = '10'; //int_size_content medium
+$iscmd = '12'; //int_size_content medium
 $iscsm ='12'; //int_size_content small
 $isic = '12';//int_size_inner_content
 $ioc = 'col-md-offset-1 col-sm-offset-1 '; //int_offset_content

@@ -29,7 +29,7 @@ return array(
     'jumbotron' => array(
         'display' => true, // option : true ,false
         'title' => 'Hello world!',
-        'content' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam gravida libero vel magna cursus semper.',
+        'content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam gravida libero vel magna cursus semper.</p>',
         'button' => array(
             'title' => 'Learn more',
             'link' => '#',

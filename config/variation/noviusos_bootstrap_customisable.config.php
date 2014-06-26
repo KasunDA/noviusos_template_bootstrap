@@ -17,48 +17,56 @@ $width_image = "650px";
 $width_standard = "500px";
 $height_wysiwyg = 350;
 
+\Config::load('noviusos_template_bootstrap::skin', true);
+$temp_skin = \Config::get('noviusos_template_bootstrap::skin');
+
+
+foreach ($temp_skin as $key => $value) {
+    $skin[$key] = $key;
+}
+
 \Config::load('noviusos_template_bootstrap::template', true);
+
 
 return array(
     'init' => function () {
 
         $config =  \Config::get('noviusos_template_bootstrap::template');
-
-        $array = Arr::flatten($config , '-');
+        $array = Arr::flatten($config, '-');
         $_input_hidden_left = '';
         $_input_hidden_right= '';
         $tab_left = \Config::get('noviusos_template_bootstrap::template.left.blocks');
         $tab_right = \Config::get('noviusos_template_bootstrap::template.right.blocks');
 
-        foreach($tab_left as $key => $value){
-            if($value['display'] == true){
+        foreach ($tab_left as $key => $value) {
+            if ($value['display'] == true) {
                 $_input_hidden_left .= 'left-blocks-'.$key.'-display||';
             }
         }
 
-        foreach($tab_right as $key => $value){
-            if($value['display'] == true){
+        foreach ($tab_right as $key => $value) {
+            if ($value['display'] == true) {
                 $_input_hidden_right .= 'right-blocks-'.$key."-display||";
             }
         }
 
         $sidebar_display = ($config['left']['display'] ?
             ($config['right']['display'] ? "both" : "left") :
-            ($config['right']['display'] ? "right" : "none"));
+            ($config['right']['display'] ? 'right' : "none"));
 
         $array['_sidebar-display'] = $sidebar_display;
         $array['_input_hidden_right'] = $_input_hidden_right;
         $array['_input_hidden_left'] = $_input_hidden_left;
         $temp = "";
 
-         for ($i = 0; $i < 12; $i++) {
-            for ( $j = 0; $j < 12; $j++) {
+        for ($i=0; $i<12; $i++) {
+            for ($j = 0; $j < 12; $j++) {
                 $temp .= "1 ";
-                }
-                $temp = substr( $temp, 0 , strlen($temp)-1);
-                $temp .= "|";
             }
-            $temp = substr( $temp, 0 , strlen($temp)-1);
+            $temp = substr($temp, 0, strlen($temp)-1);
+            $temp .= "|";
+        }
+        $temp = substr($temp, 0, strlen($temp)-1);
 
         $array['wysiwyg_layout'] = $temp;
 
@@ -70,23 +78,19 @@ return array(
         return 12;
     },
     'layout' => function ($tpvar) {
-        if(isset($tpvar->tpvar_data['wysiwyg_layout']) && $tpvar->tpvar_data['wysiwyg_layout'] != ""){
+        if (isset($tpvar->tpvar_data['wysiwyg_layout']) && $tpvar->tpvar_data['wysiwyg_layout'] != '') {
             $layout = $tpvar->tpvar_data['wysiwyg_layout'];
-            $tab = explode("|" , $layout);
+            $tab = explode("|", $layout);
             $tab_layout = array();
             $tab_done = array();
 
-            foreach($tab as $key => $value)
-            {
-                $tab[$key] = explode(" " ,$value);
+            foreach ($tab as $key => $value) {
+                $tab[$key] = explode(" ", $value);
             }
 
-             for($i = 0 ; $i < 12 ; $i++)
-             {
-                 for($j = 0 ; $j < 12 ; $j++)
-                 {
-                    if($tab[$i][$j] != 0 && !in_array($tab[$i][$j] ,$tab_done ))
-                    {
+            for ($i = 0; $i < 12; $i++) {
+                for ($j = 0; $j < 12; $j++) {
+                    if ($tab[$i][$j] != 0 && !in_array($tab[$i][$j], $tab_done)) {
                         $x = $i;
                         $y = $j;
                         $h = 0;
@@ -94,19 +98,17 @@ return array(
                         $val = $tab[$i][$j];
                         $tab_done []  = $val;
 
-                        while($x+$h < 12 && $tab[$x+$h][$y] == $val)
-                        {
+                        while ($x+$h < 12 && $tab[$x+$h][$y] == $val) {
                             $h++;
                         }
 
-                        while($y+$w < 12 &&  $tab[$x][$y+$w] == $val)
-                        {
+                        while ($y+$w < 12 &&  $tab[$x][$y+$w] == $val) {
                             $w++;
                         }
                         $tab_layout["content".$val] = $y.",".$x.",".$w.",".$h;
                     }
-                 }
-             }
+                }
+            }
             return $tab_layout;
         }
     },
@@ -625,22 +627,7 @@ return array(
                 'label' => __('Skin'),
                 'form' => array(
                     'type' => 'select',
-                    'options' => array(
-                        'Amelia'=> 'Amelia',
-                        'Cerulean'=>'Cerulean',
-                        'Custom'=>'Custom'    ,
-                        'Cyborg'=>'Cyborg'    ,
-                        'Maestro'=>'Maestro'  ,
-                        'Marine'=>'Marine'  ,
-                        'Mineral'=>'Mineral'  ,
-                        'Nature'=>'Nature'    ,
-                        'Penciled'=>'Penciled',
-                        'Polaire'=>'Polaire'  ,
-                        'Savannah'=>'Savannah'  ,
-                        'Slate'=>'Slate'     ,
-                        'Tonal blue'=>'Tonal blue',
-                        'United'=>'United'
-                    ),
+                    'options' => $skin
                 ),
             ),
             '_sidebar-display' => array(

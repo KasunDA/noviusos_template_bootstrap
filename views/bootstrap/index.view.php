@@ -121,25 +121,35 @@ if(!isset($config['wysiwyg_layout']) || $config['wysiwyg_layout'] == "")
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
 <?php
-$tab_skin = array_diff(scandir('static/apps/noviusos_template_bootstrap/vendor/'.$template.'/css/skin/'), array('..', '.'));
+
+\Config::load('noviusos_template_bootstrap::skin', true);
+$tab_skin = \Config::get('noviusos_template_bootstrap::skin');
 
 $str_theme_name = $template;
 $str_skin_name = $config['principal']['skin'];
-foreach ($tab_skin as $key => $value) {
-    $chaine = explode('.css', $value);
 
-    if ($chaine[0] == $str_skin_name) {
-        ?>
-        <link title="<?= $chaine[0] ?>" rel="stylesheet" type="text/css"
-              href="static/apps/noviusos_template_bootstrap/vendor/<?= $str_theme_name ?>/css/skin/<?= $value ?>">
+if ($dom_id) {
+    foreach ($tab_skin as $key => $value) {
+
+        if ($key == $str_skin_name) {
+            ?>
+            <link title="<?= $key ?>" rel="stylesheet" type="text/css"
+                  href="<?= $value ?>">
         <?php
-    } else {
-        ?>
-        <link title="<?= $chaine[0] ?>" rel="alternate stylesheet" type="text/css"
-              href="static/apps/noviusos_template_bootstrap/vendor/<?= $str_theme_name ?>/css/skin/<?= $value ?>">
-    <?php
+        } else {
+            ?>
+            <link title="<?= $key ?>" rel="alternate stylesheet" type="text/css"
+                  href="<?= $value ?>">
+        <?php
+        }
     }
+} else {
+    ?>
+    <link title="<?= $tab_skin[$str_skin_name] ?>" rel="stylesheet" type="text/css"
+          href="<?= $tab_skin[$str_skin_name] ?>">
+    <?php
 }
+
 ?>
     <link rel="stylesheet"
           href="static/apps/noviusos_template_bootstrap/vendor/<?= $str_theme_name ?>/css/social-buttons-3.css">

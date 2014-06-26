@@ -11,9 +11,9 @@ define(
     [
         'jquery-nos'
     ],
-    function($) {
+    function ($) {
         "use strict";
-        return function(data) {
+        return function (data) {
 
             data = $.extend({
                 form_id: '',
@@ -29,15 +29,15 @@ define(
             var $dispatcher = $container.closest('.nos-dispatcher, body');
             var $config_div = $container.find('> div:last');
 
-            $container.nosOnShow('one', function() {
+            $container.nosOnShow('one', function () {
                 var $container_iframe = $('<div class="template-e-iframe"></div>').appendTo($container)
                     .css('top', $config_div.position().top + 'px');
                 var $template = $dispatcher.find('select[name=tpvar_template]');
 
                 $('<iframe src="admin/noviusos_template_bootstrap/visualise?context=' + $dispatcher.data('nosContext') +
                     '&template=' + $template.val() +
-                    '&tpvar_id=' + (data.tpvar_id ? data.tpvar_id : '')  +
-                    '&dom_id=' + data.form_id +'"></iframe>')
+                    '&tpvar_id=' + (data.tpvar_id ? data.tpvar_id : '') +
+                    '&dom_id=' + data.form_id + '"></iframe>')
                     .appendTo($container_iframe);
             });
 
@@ -90,11 +90,11 @@ define(
                     .nosFormUI();
 
                 $div.find('li').addClass('ui-widget-content ui-helper-clearfix')
-                    .hover(function() {
+                    .hover(function () {
                         $(this).addClass('ui-state-hover');
-                    }, function() {
+                    }, function () {
                         $(this).removeClass('ui-state-hover');
                     });
             });
         }
-});
+    });

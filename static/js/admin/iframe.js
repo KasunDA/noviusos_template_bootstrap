@@ -92,19 +92,19 @@ $(function () {
         return false;
     })
 
-    var wysiwyg_enhancer = function() {
+    var wysiwyg_enhancer = function () {
         var $enhancer = $(this);
         var enhancer_id = $enhancer.data('enhancer');
-        var data      = $.extend(true, {enhancer: enhancer_id}, $enhancer.data('config'));
+        var data = $.extend(true, {enhancer: enhancer_id}, $enhancer.data('config'));
         $.ajax({
             url: 'admin/noviusos_template_bootstrap/ajax/enhancer',
             type: 'POST',
             dataType: 'json',
             data: data,
-            success: function(json) {
+            success: function (json) {
                 $enhancer.html($.trim(json.preview));
             },
-            error: function() {
+            error: function () {
                 $enhancer.html('Error');
             }
         });
@@ -182,23 +182,23 @@ $(function () {
                     twitter(document, 'script', 'twitter-wjs');
                 }
 
-                if($div.hasClass("template-e-principal")){
+                if ($div.hasClass("template-e-principal")) {
                     $('head style').html($div.find('[name="css_style"]').val());
                 }
 
-                if($div.hasClass("template-e-block-grid")){
+                if ($div.hasClass("template-e-block-grid")) {
                     var val_tab = $div.find('[name="wysiwyg_layout"]').attr("value");
 
                     $.ajax({
 
-                        url : "admin/noviusos_template_bootstrap/ajax/grid",
+                        url: "admin/noviusos_template_bootstrap/ajax/grid",
                         type: "POST",
                         dataType: "html",
-                        data : "grid="+val_tab,
-                        error : function(){
+                        data: "grid=" + val_tab,
+                        error: function () {
                             alert("Erreur dans la création du template");
                         },
-                        success : function(msg){
+                        success: function (msg) {
                             $("#grid_content_layout").html(msg);
                         }
 
@@ -365,21 +365,21 @@ $(function () {
         $div.find(".btn_write_panel").on('click', function (e) {
 
             var $button = parentWindow$(this);
-            var $label =  $div.find('#label_'+$button.data("input"));
-            var $checkbox = $div.find('#'+$label.attr("for"));
+            var $label = $div.find('#label_' + $button.data("input"));
+            var $checkbox = $div.find('#' + $label.attr("for"));
             var $input = $("<input type='text'>");
             $label.parent().parent().enableSelection();
             $label.replaceWith($('<input/>').attr('type', 'text')
-                    .val($label.text())
-                    .attr("value" , $label.text())
-                    .attr("name" , "ipt_temp")
-                    .blur(function(){
+                .val($label.text())
+                .attr("value", $label.text())
+                .attr("name", "ipt_temp")
+                .blur(function () {
 
-                            $(this).replaceWith($label.html($(this).val()));
-                            $($checkbox.data("target")+" .panel-title").html($(this).val());
-                            $dialogsContent.find($checkbox.data("admin-target")).val($(this).val());
-                            $label.parent().parent().disableSelection();
-                    })
+                    $(this).replaceWith($label.html($(this).val()));
+                    $($checkbox.data("target") + " .panel-title").html($(this).val());
+                    $dialogsContent.find($checkbox.data("admin-target")).val($(this).val());
+                    $label.parent().parent().disableSelection();
+                })
 
 
             );
@@ -518,7 +518,7 @@ $(function () {
                     $("#side-right").hide("slow");
                     $("#side-left").hide("slow");
 
-                    tab = writeClasses($middle_content.attr("class"), "col-md-offset-1 col-sm-offset-1 col-md-10 col-sm-9 col-xs-12");
+                    tab = writeClasses($middle_content.attr("class"), "col-md-12 col-sm-12 col-xs-12");
                     $middle_content.switchClass(tab[0], tab[1]);
                     break;
 
@@ -543,12 +543,12 @@ $(function () {
         // Checkbox  Fixed background
         $fixed_background = $div.find(":checkbox[name='principal-background_fixed_display']");
 
-        $fixed_background.click(function(){
-            if($(this).prop("checked")){
-                $("body").css("background-attachment" , "fixed");
+        $fixed_background.click(function () {
+            if ($(this).prop("checked")) {
+                $("body").css("background-attachment", "fixed");
             }
-            else{
-                $("body").css("background-attachment" , "inerit");
+            else {
+                $("body").css("background-attachment", "inerit");
             }
         });
 
@@ -573,17 +573,15 @@ $(function () {
                 var tab_temp = "";
 
                 $("body").css({
-                    backgroundRepeat : "initial",
-                    backgroundPosition:"initial"
-                }).css("background-size" , "initial");
+                    backgroundRepeat: "initial",
+                    backgroundPosition: "initial"
+                }).css("background-size", "initial");
 
-                if($div.find(":checkbox[name='principal-background_fixed_display']").prop("checked"))
-                {
-                    $("body").css("background-attachement" , "fixed");
+                if ($div.find(":checkbox[name='principal-background_fixed_display']").prop("checked")) {
+                    $("body").css("background-attachement", "fixed");
                 }
 
-                for(var i = 0; i < temp.length ; i++)
-                {
+                for (var i = 0; i < temp.length; i++) {
                     tab_temp = temp[i].split(":");
                     $("body").css($.trim(tab_temp[0]), $.trim(tab_temp[1]));
 

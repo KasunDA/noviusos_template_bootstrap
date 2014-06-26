@@ -55,27 +55,24 @@ $content = (string)View::forge($content['view'], $view_params + $content['params
 
         <div id="grid_pattern_2" class="grid_pattern">
             <div class="cell_new_demo" style=" width :40px ; height :88px ; " data-new="1"></div>
-            <div class="cell_new_demo" style=" ; width :40px ; height :88px ;"  data-new="2"></div>
-            <div class="cell_new_demo" style=" ; width :40px ; height :88px ;"  data-new="3"></div>
+            <div class="cell_new_demo" style=" width :40px ; height :88px ;"  data-new="2"></div>
+            <div class="cell_new_demo" style=" width :40px ; height :88px ;"  data-new="3"></div>
             <input type="hidden" name="tab_grid_pattern_2" value="1 1 1 1 2 2 2 2 3 3 3 3|1 1 1 1 2 2 2 2 3 3 3 3|1 1 1 1 2 2 2 2 3 3 3 3|1 1 1 1 2 2 2 2 3 3 3 3|1 1 1 1 2 2 2 2 3 3 3 3|1 1 1 1 2 2 2 2 3 3 3 3|1 1 1 1 2 2 2 2 3 3 3 3|1 1 1 1 2 2 2 2 3 3 3 3|1 1 1 1 2 2 2 2 3 3 3 3|1 1 1 1 2 2 2 2 3 3 3 3|1 1 1 1 2 2 2 2 3 3 3 3|1 1 1 1 2 2 2 2 3 3 3 3">
         </div><br><br>
 
         <div id="grid_pattern_3" class="grid_pattern">
-            <div class="cell_new_demo" style=" width :128px ; height :44px ; " data-new="1"></div><br>
-            <div class="cell_new_demo" style=" ; width :128px ; height :44px ;"  data-new="2"></div>
+            <div class="cell_new_demo" style=" width :128px ; height :44px ;" data-new="1"></div><br>
+            <div class="cell_new_demo" style=" width :128px ; height :44px ;"  data-new="2"></div>
             <input type="hidden" name="tab_grid_pattern_3" value="1 1 1 1 1 1 1 1 1 1 1 1|1 1 1 1 1 1 1 1 1 1 1 1|1 1 1 1 1 1 1 1 1 1 1 1|1 1 1 1 1 1 1 1 1 1 1 1|1 1 1 1 1 1 1 1 1 1 1 1|1 1 1 1 1 1 1 1 1 1 1 1|2 2 2 2 2 2 2 2 2 2 2 2|2 2 2 2 2 2 2 2 2 2 2 2|2 2 2 2 2 2 2 2 2 2 2 2|2 2 2 2 2 2 2 2 2 2 2 2|2 2 2 2 2 2 2 2 2 2 2 2|2 2 2 2 2 2 2 2 2 2 2 2">
         </div><br><br>
 
         <div id="grid_pattern_4" class="grid_pattern">
-            <div class="cell_new_demo" style=" width :128px ; height :29px ; " data-new="1"></div><br>
-            <div class="cell_new_demo" style=" ; width :128px ; height :29px ;"  data-new="2"></div><br>
-            <div class="cell_new_demo" style=" ; width :128px ; height :29px ;"  data-new="2"></div>
+            <div class="cell_new_demo" style="width :128px ; height :29px ; " data-new="1"></div><br>
+            <div class="cell_new_demo" style="width :128px ; height :29px ;"  data-new="2"></div><br>
+            <div class="cell_new_demo" style="width :128px ; height :29px ;"  data-new="3"></div>
             <input type="hidden" name="tab_grid_pattern_4" value="1 1 1 1 1 1 1 1 1 1 1 1|1 1 1 1 1 1 1 1 1 1 1 1|1 1 1 1 1 1 1 1 1 1 1 1|1 1 1 1 1 1 1 1 1 1 1 1|2 2 2 2 2 2 2 2 2 2 2 2|2 2 2 2 2 2 2 2 2 2 2 2|2 2 2 2 2 2 2 2 2 2 2 2|2 2 2 2 2 2 2 2 2 2 2 2|3 3 3 3 3 3 3 3 3 3 3 3|3 3 3 3 3 3 3 3 3 3 3 3|3 3 3 3 3 3 3 3 3 3 3 3|3 3 3 3 3 3 3 3 3 3 3 3">
         </div>
 
     </div>
-    <?php //1 1 1 1 2 2 2 2 3 3 3 3|4 4 4 4 4 4 4 4 4 4 4 4|5 5 5 5 5 5 6 6 6 6 6 6|7 7 7 7 7 7 7 7 7 7 7 7|8 8 8 8 8 8 9 9 9 9 9 9|8 8 8 8 8 8 10 10 10 10 10 10|11 11 11 11 11 11 11 11 11 11 11 11|12 12 12 12 13 13 13 13 14 14 14 14|15 15 15 16 16 16 17 17 17 18 18 18|19 19 19 19 19 19 19 19 19 19 19 19|20 20 20 20 20 20 20 20 21 21 21 21|23 23 23 23 22 22 22 22 22 22 22 22
-?>
-
 
 </div>

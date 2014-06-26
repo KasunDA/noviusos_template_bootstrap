@@ -34,16 +34,16 @@ define(
             var y_init_px; // initial y coordonate in px
             var x_init_grid; // initial X coordonate in grid frame
             var y_init_grid; // initial Y coordonate in grid frame
-            var x_final_grid ; // final X coordonate in grid frame
-            var y_final_grid ; // final X coordonate in grid frame
+            var x_final_grid; // final X coordonate in grid frame
+            var y_final_grid; // final X coordonate in grid frame
             var h_init_px; // initial height in px
             var w_init_px; // initial width in px
             var h_final_px; // final height in px
             var w_final_px; // final width in px
             var h_init_grid;  // initial height in grid frame
             var w_init_grid;  // initial width in grid frame
-            var h_final_grid ; // final height in grid frame
-            var w_final_grid ; // final width in grid frame
+            var h_final_grid; // final height in grid frame
+            var w_final_grid; // final width in grid frame
 
             int_nb_ligne = 12;
             int_nb_colonne = 12;
@@ -58,11 +58,11 @@ define(
                     for (var j = 0; j < int_nb_colonne; j++) {
                         chaine += tab_grid [i][j] + " ";
                     }
-                    chaine = chaine.substr(0 , chaine.length-1);
+                    chaine = chaine.substr(0, chaine.length - 1);
                     chaine += "|";
                 }
-                chaine = chaine.substr(0 , chaine.length-1)
-                $('[name="wysiwyg_layout"]').attr("value" ,chaine );
+                chaine = chaine.substr(0, chaine.length - 1)
+                $('[name="wysiwyg_layout"]').attr("value", chaine);
             }
 
             //--------------------------------------
@@ -93,18 +93,12 @@ define(
             }
 
 
-
-
             var chaine_tab = $('[name="wysiwyg_layout"]').val();
             load_grid(chaine_tab);
 
-            $(".grid_pattern").click(function(){
-                load_grid($(this).find(':hidden').val());
+            $(".grid_pattern").click(function () {
+                load_grid($(this).find('input[type="hidden"]').val());
             });
-
-
-
-
 
 
             //--------------------------------------
@@ -176,7 +170,7 @@ define(
 
                 collision:
                     for (var t = x_final_grid; t < h_final_grid + x_final_grid; t++) {
-                        for (var s = y_final_grid; s < w_final_grid + y_final_grid ; s++) {
+                        for (var s = y_final_grid; s < w_final_grid + y_final_grid; s++) {
                             if (tab_grid[t][s] != 0 && tab_grid[t][s] != $(this).attr("data-new")) {
                                 collision = true
                                 break collision;
@@ -229,7 +223,7 @@ define(
                 h_init_grid = ((parseInt(h_init_px) - 40) / 48 ) + 1;
                 w_init_grid = ((parseInt(w_init_px) - 40) / 48) + 1;
 
-                h_final_grid= ((parseInt(h_final_px) - 40) / 48 ) + 1;
+                h_final_grid = ((parseInt(h_final_px) - 40) / 48 ) + 1;
                 w_final_grid = ((parseInt(w_final_px) - 40) / 48) + 1;
 
                 collision:
@@ -283,8 +277,6 @@ define(
                 e.stopPropagation();
 
                 activeNewCell();
-
-
             });
 
             $(".template-e-block-grid").on('dragstop resizestop click', '.cell_new', function (e, ui) {
@@ -305,13 +297,11 @@ define(
             }
 
 
-            function load_grid(chaine_tab)
-            {
+            function load_grid(chaine_tab) {
                 var temp_tab;
                 $(".cell_new").remove();
 
-                if(chaine_tab == "")
-                {
+                if (chaine_tab == "") {
                     temp_tab = new Array(int_nb_ligne);
 
                     for (var i = 0; i < int_nb_ligne; i++) {
@@ -324,8 +314,8 @@ define(
                         }
                     }
                 }
-                else{
-                    temp_tab =  chaine_tab.split("|");
+                else {
+                    temp_tab = chaine_tab.split("|");
 
                     for (var i = 0; i < temp_tab.length; i++) {
                         temp_tab[i] = temp_tab[i].split(" ");
@@ -335,31 +325,26 @@ define(
                 tab_grid = temp_tab;
                 var tab_done = new Array();
 
-                for(var i = 0 ; i < 12 ; i++)
-                {
-                    for(var j = 0 ; j < 12 ; j++)
-                    {
-                        if(tab_grid[i][j] != 0 && $.inArray(tab_grid[i][j] ,tab_done ) == -1)
-                        {
+                for (var i = 0; i < 12; i++) {
+                    for (var j = 0; j < 12; j++) {
+                        if (tab_grid[i][j] != 0 && $.inArray(tab_grid[i][j], tab_done) == -1) {
                             var x = i;
                             var y = j;
                             var h = 0;
                             var w = 0;
                             var val = tab_grid[i][j];
-                            tab_done.push(val) ;
+                            tab_done.push(val);
 
-                            while(x+h < 12 && tab_grid[x+h][y] == val)
-                            {
+                            while (x + h < 12 && tab_grid[x + h][y] == val) {
                                 h++;
                             }
 
-                            while(y+w < 12 &&  tab_grid[x][y+w] == val)
-                            {
+                            while (y + w < 12 && tab_grid[x][y + w] == val) {
                                 w++;
                             }
 
                             $("#div_grid").append('<div class="cell_new " data-new ="' + val + '" ' +
-                                'style="top :' + (4 + x * 48) + 'px ;left :' + (4 + y * 48) +  'px ; width :' + (40 + ((w -1) * 48)) +  'px ; height :' + (40 + ((h - 1) * 48)) +  'px"></div>');
+                                'style="top :' + (4 + x * 48) + 'px ;left :' + (4 + y * 48) + 'px ; width :' + (40 + ((w - 1) * 48)) + 'px ; height :' + (40 + ((h - 1) * 48)) + 'px"></div>');
                             int_id_new_cell = parseInt(val) + 1;
                         }
                     }
@@ -371,7 +356,7 @@ define(
                 $(".cell_new:first").trigger("resizestop");
             }
 
-            function activeNewCell(){
+            function activeNewCell() {
                 $(".template-e-block-grid").on("click", ".cell_new", function (e) {
                     $(".selected").removeClass("selected");
                     $(this).addClass("selected");
@@ -396,29 +381,4 @@ define(
             }
         }
 
-
-
-        function activeNewCell(){
-            $(".template-e-block-grid").on("click", ".cell_new", function (e) {
-                $(".selected").removeClass("selected");
-                $(this).addClass("selected");
-                $("#btn_suppr").prop("disabled", false);
-                e.stopPropagation();
-            });
-
-            $(document).click(function (e) {
-                $(".selected").removeClass("selected");
-                $("#btn_suppr").prop("disabled", true);
-            });
-
-            $(".cell_new").draggable({
-                containment: "#div_grid",
-                grid: [48, 48]
-            });
-
-            $(".cell_new").resizable({
-                containment: "#div_grid",
-                grid: [48, 48]
-            });
-        }
-});
+    });
