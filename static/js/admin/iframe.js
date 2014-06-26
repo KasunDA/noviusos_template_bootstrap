@@ -136,7 +136,7 @@ $(function () {
             title: title,
             content: $div.show(),
             width: width,
-            height: height,
+            minHeight: height,
             buttons: [
                 { text: 'Ok',
                     click: function () {
