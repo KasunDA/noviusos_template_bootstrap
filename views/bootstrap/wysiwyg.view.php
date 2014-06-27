@@ -41,8 +41,8 @@ echo $str;
 function find_shape(&$tab_sub ,&$grid ,$str)
 {
     $continue = true;
-    $largeur= count($grid);
-    $longueur = count($grid [0]);
+    $height= count($grid);
+    $width = count($grid [0]);
     $i=0;
     $j=0;
     $size = 1;
@@ -54,19 +54,19 @@ function find_shape(&$tab_sub ,&$grid ,$str)
         $j = 0;
         while($continue)
         {
-            if($j + 1 == $longueur)
+            if($j + 1 == $width)
             {
                 $tab_sub["cols"][] = array("width" => $size );
                 $continue = false;
             }
             else if ($grid[$i][$j] === $grid[$i][$j + 1] && $grid[$i][$j] == 0)
             {
-                if( $i+1 == $largeur)
+                if( $i+1 == $height)
                 {
                     $i = 0;
                     $size++;
 
-                    if( $j != $longueur)
+                    if( $j != $width)
                         $j++;
                     else
                         $continue = false;
@@ -82,7 +82,7 @@ function find_shape(&$tab_sub ,&$grid ,$str)
                 $i = 0;
                 $size++;
 
-                if( $j != $longueur)
+                if( $j != $width)
                     $j++;
                 else
                     $continue = false;
@@ -91,7 +91,7 @@ function find_shape(&$tab_sub ,&$grid ,$str)
             else if ($grid[$i][$j] !== $grid[$i][$j + 1])
             {
                 $ok = true;
-                for($k = $i ; $k < $largeur ; $k++)
+                for($k = $i ; $k < $height ; $k++)
                 {
                     if ($grid[$k][$j] === $grid[$k][$j + 1] && $grid[$k][$j] != 0)
                         $ok = false;
@@ -114,19 +114,19 @@ function find_shape(&$tab_sub ,&$grid ,$str)
         $j = 0;
         while($continue)
         {
-            if($i + 1 == $largeur)
+            if($i + 1 == $height)
             {
                 $tab_sub["rows"][] = array("height" => $size );
                 $continue = false;
             }
             else if ($grid[$i][$j] === $grid[$i + 1][$j] && $grid[$i][$j] == 0)
             {
-                if( $j+1 == $longueur)
+                if( $j+1 == $width)
                 {
                     $j = 0;
                     $size++;
 
-                    if( $i != $largeur)
+                    if( $i != $height)
                         $i++;
                     else
                         $continue = false;
@@ -142,7 +142,7 @@ function find_shape(&$tab_sub ,&$grid ,$str)
                 $j = 0;
                 $size++;
 
-                if( $i != $largeur)
+                if( $i != $height)
                     $i++;
                 else
                     $continue = false;
@@ -151,7 +151,7 @@ function find_shape(&$tab_sub ,&$grid ,$str)
             else if ($grid[$i][$j] !== $grid[$i + 1][$j])
             {
                 $ok = true;
-                for($k = $j ; $k < $longueur ; $k++)
+                for($k = $j ; $k < $width ; $k++)
                 {
                     if ($grid[$i][$k] === $grid[$i + 1][$k] && $grid[$i][$k] !== 0)
                         $ok = false;
@@ -208,14 +208,14 @@ function cut_grid(&$tab_sub , $grid , $i = 0 )
    else if(count($tab_temp["cols"])>1)
     {
         $tab_sub["cols"] = $tab_temp["cols"];
-        $count_colonne = 0;
+        $count_column = 0;
         foreach($tab_sub["cols"] as $key => $value)
         {
             $size = $value["width"];
             $map = $grid;
             array_unshift($map , null);
             $map = call_user_func_array("array_map" , $map);
-            $map = array_slice($map , $count_colonne , $size);
+            $map = array_slice($map , $count_column , $size);
             if(is_array($map[0])){
             array_unshift($map , null);
             }
@@ -234,7 +234,7 @@ function cut_grid(&$tab_sub , $grid , $i = 0 )
                 }
 
             }
-            $count_colonne += $size;
+            $count_column += $size;
 
 
         }
@@ -254,16 +254,16 @@ function cut_grid(&$tab_sub , $grid , $i = 0 )
 }
 
 
-function code_create($tab , $largeur , $longueur , &$str  , $wysiwyg){
-    $longueur_cont = $longueur;
+function code_create($tab , $height , $width , &$str  , $wysiwyg){
+    $width_container = $width;
     if(isset($tab["rows"]))
     {
        foreach($tab["rows"] as $key => $value)
        {
-           $largeur = $value["height"];
+           $height = $value["height"];
            if($value["layout"] == null)
            {
-               $str .= "\n<div class='div_layout ".calc_grid_column(($longueur/$longueur_cont)*100)."' style='' data-val=".$value['id'].">".
+               $str .= "\n<div class='div_layout ".calc_grid_column(($width/$width_container)*100)."' style='' data-val=".$value['id'].">".
                    (isset($wysiwyg["content".intval($value['id'])]) && intval($value['id']) != 0?
                        $wysiwyg["content".$value['id']] :
                        ""
@@ -271,8 +271,8 @@ function code_create($tab , $largeur , $longueur , &$str  , $wysiwyg){
            }
            else
            {
-               $str .= "\n<div class='layout rows ".calc_grid_column(($longueur/$longueur_cont)*100)."'>";
-               code_create($value["layout"] ,$largeur ,$longueur,  $str ,$wysiwyg);
+               $str .= "\n<div class='layout rows ".calc_grid_column(($width/$width_container)*100)."'>";
+               code_create($value["layout"] ,$height ,$width,  $str ,$wysiwyg);
                $str .= "\n</div>";
 
            }
@@ -283,10 +283,10 @@ function code_create($tab , $largeur , $longueur , &$str  , $wysiwyg){
         foreach($tab["cols"] as $key => $value)
         {
 
-            $longueur = $value["width"];
+            $width = $value["width"];
             if($value["layout"] == null)
             {
-                $str .= "\n\t <div class='div_layout ".calc_grid_column(($longueur/$longueur_cont)*100)."'
+                $str .= "\n\t <div class='div_layout ".calc_grid_column(($width/$width_container)*100)."'
                  style='' data-val=".$value['id']."> ".( (isset($wysiwyg["content".$value['id']]) && intval($value['id']) != 0 ?
                         $wysiwyg["content".$value['id']] :
                         ""
@@ -295,8 +295,8 @@ function code_create($tab , $largeur , $longueur , &$str  , $wysiwyg){
             else
             {
 
-                $str .= "\t<div class='layout ".calc_grid_column(($longueur/$longueur_cont)*100)."'>";
-                code_create($value["layout"] ,$largeur ,$longueur,  $str ,$wysiwyg);
+                $str .= "\t<div class='layout ".calc_grid_column(($width/$width_container)*100)."'>";
+                code_create($value["layout"] ,$height ,$width,  $str ,$wysiwyg);
                 $str .= "\n\t</div>";
 
             }
