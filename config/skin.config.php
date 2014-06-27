@@ -10,7 +10,7 @@
 
 
 return array(
-    'Amelia' => 'static/apps/noviusos_template_bootstrap/vendor/bootstrap/css/skin/Amelia.css.css',
+    'Amelia' => 'static/apps/noviusos_template_bootstrap/vendor/bootstrap/css/skin/Amelia.css',
     'Cerulean' => 'static/apps/noviusos_template_bootstrap/vendor/bootstrap/css/skin/Cerulean.css',
     'Custom' => 'static/apps/noviusos_template_bootstrap/vendor/bootstrap/css/skin/Custom.css',
     'Cyborg' => 'static/apps/noviusos_template_bootstrap/vendor/bootstrap/css/skin/Cyborg.css',

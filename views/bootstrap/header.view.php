@@ -19,7 +19,7 @@ switch ($config['header']['type']) {
         $display_img = 'none';
         $id_text = 'titleonly';
         $display_img_small = 'none';
-        $str_title_small = '<span class="title_small_only">'.$config['header']['title'].'</span>';
+        $str_title_small = '<span class="title_small_only">' . $config['header']['title'] . '</span>';
         break;
 
     case 'image':
@@ -33,15 +33,15 @@ switch ($config['header']['type']) {
 
 $sitename = $config['header']['title'];
 
-$str_img = '<div id="header-logo" class="image " style="display: '.
-    $display_img.';" > <img src="'.$config['header']['logo_url'].'"></div>';
-$str_img_small = '<div id="header-logo-small" class="image_small"> <img src="'.
-    $config['header']['logo_url'].'"></div>';
-$str_title_small = '<div id="header-title-small" class="title_small">'.$sitename.'</div>';
-$str_title = '<div id="header-title" style="display: '.
-    $display_title.';font-size: 20px;line-height: 20px;">'.$sitename.'</div>';
-$str_baseline = '<div id="header-baseline" style="display: '.
-    $display_title.';font-size: 13px;">'.$config['header']['baseline'].'</div>';
+$str_img = '<div id="header-logo" class="image " style="display: ' .
+    $display_img . ';" > <img src="' . $config['header']['logo_url'] . '"></div>';
+$str_img_small = '<div id="header-logo-small" class="image_small"> <img src="' .
+    $config['header']['logo_url'] . '"></div>';
+$str_title_small = '<div id="header-title-small" class="title_small">' . $sitename . '</div>';
+$str_title = '<div id="header-title" style="display: ' .
+    $display_title . ';font-size: 20px;line-height: 20px;">' . $sitename . '</div>';
+$str_baseline = '<div id="header-baseline" style="display: ' .
+    $display_title . ';font-size: 13px;">' . $config['header']['baseline'] . '</div>';
 
 $top = '-50px';
 
@@ -51,7 +51,7 @@ if (!$dom_id) {
             $str_img = '';
             $id_text = 'titleonly';
             $str_img_small = '';
-            $str_title_small = '<span class="title_small_only">'.$config['header']['title'].'</span>';
+            $str_title_small = '<span class="title_small_only">' . $config['header']['title'] . '</span>';
             break;
 
         case 'image':
@@ -69,7 +69,7 @@ $path_img = 'static/apps/noviusos_template_bootstrap/img/';
 $depth = 3;
 $top = '-72px';
 
-$style_fixed  = '';
+$style_fixed = '';
 
 if ($config['header']['fixed']) {
     $style_fixed = 'header-fixed';
@@ -78,7 +78,7 @@ if ($config['header']['fixed']) {
 <div class="head_content <?= $style_fixed ?>">
     <nav class="navbar navbar-inverse " role="navigation">
 
-        <div class="navbar-header" >
+        <div class="navbar-header">
 
             <a class="navbar-brand" id="sitename"
                href="<?= \Nos\Tools_Url::context(\Nos\Nos::main_controller()->getPage()->get_context()) ?>"
@@ -92,27 +92,27 @@ if ($config['header']['fixed']) {
             </button>
         </div>
         <div class="container collapse navbar-collapse">
-<?php
-if ($depth > 0) {
-    $tpvar = \Nos\Nos::main_controller()->getTemplateVariation();
-    $menu = $tpvar->menus->principal;
-    if (empty($menu)) {
-        $menu = \Nos\Menu\Model_Menu::buildFromPages(\Nos\Nos::main_controller()->getContext());
-    }
-    echo $menu->html(array(
-        'view' => 'noviusos_template_bootstrap::'.$template.'/menu_header_driver',
-        'id' => 'list-menu',
-        'class' => 'nav navbar-nav navbar-right'
-    ));
-}
-?>
+            <?php
+            if ($depth > 0) {
+                $tpvar = \Nos\Nos::main_controller()->getTemplateVariation();
+                $menu = $tpvar->menus->principal;
+                if (empty($menu)) {
+                    $menu = \Nos\Menu\Model_Menu::buildFromPages(\Nos\Nos::main_controller()->getContext());
+                }
+                echo $menu->html(array(
+                    'view' => 'noviusos_template_bootstrap::' . $template . '/menu_header_driver',
+                    'id' => 'list-menu',
+                    'class' => 'nav navbar-nav navbar-right'
+                ));
+            }
+            ?>
         </div>
 
     </nav>
-    <div id="header" class="nav-logo customisable title_header" style="top :<?=$top?> ; z-index: auto ;">
+    <div id="header" class="nav-logo customisable title_header" style="top :<?= $top ?> ; z-index: auto ;">
         <a href="#" style="display: inline-block;">
             <?= $str_img ?>
-            <div class="<?=$id_text?>">
+            <div class="<?= $id_text ?>">
                 <?= $str_title ?>
                 <?= $str_baseline ?>
             </div>
