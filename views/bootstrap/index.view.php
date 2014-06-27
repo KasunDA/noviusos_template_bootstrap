@@ -43,7 +43,7 @@ foreach ((array) $page->template_variation->tpvar_data as $key => $value) {
     } elseif ($value != '' && $value != null && strstr($key, '-display') == false) {
         if ($key == '_input_hidden_left') {
             $tab_temp = explode('||', $value);
-            $tab_gauche_old =  arr::get($config, 'left.blocks');
+            $tab_left_old =  arr::get($config, 'left.blocks');
 
             foreach ($tab_temp as $key => $value) {
                 if ($value != '') {
@@ -51,15 +51,15 @@ foreach ((array) $page->template_variation->tpvar_data as $key => $value) {
                     $temp_key = str_replace('.display', '', $temp_key);
                     $tab_temp_value = explode('-', $value);
                     $temp_value = $tab_temp_value[count($tab_temp_value) - 2];
-                    $tab_gauche[$temp_value] = arr::get($config, $temp_key);
-                    unset($tab_gauche_old[$temp_value]);
+                    $tab_left[$temp_value] = arr::get($config, $temp_key);
+                    unset($tab_left_old[$temp_value]);
                 }
             }
-            \Arr::set($config, 'left.blocks', array_merge($tab_gauche, $tab_gauche_old));
+            \Arr::set($config, 'left.blocks', array_merge($tab_left, $tab_left_old));
 
         } elseif ($key == '_input_hidden_right') {
             $tab_temp = explode('||', $value);
-            $tab_droite_old =  arr::get($config, 'right.blocks');
+            $tab_right_old =  arr::get($config, 'right.blocks');
 
 
             foreach ($tab_temp as $key => $value) {
@@ -68,11 +68,11 @@ foreach ((array) $page->template_variation->tpvar_data as $key => $value) {
                     $temp_key = str_replace('.display', '', $temp_key);
                     $tab_temp_value = explode('-', $value);
                     $temp_value = $tab_temp_value[count($tab_temp_value) - 2];
-                    $tab_droite[$temp_value] = arr::get($config, $temp_key);
-                    unset($tab_droite_old[$temp_value]);
+                    $tab_right[$temp_value] = arr::get($config, $temp_key);
+                    unset($tab_right_old[$temp_value]);
                 }
             }
-            \Arr::set($config, 'right.blocks', array_merge($tab_droite, $tab_droite_old));
+            \Arr::set($config, 'right.blocks', array_merge($tab_right, $tab_right_old));
 
         } else {
             $key = str_replace('-', '.', $key);
