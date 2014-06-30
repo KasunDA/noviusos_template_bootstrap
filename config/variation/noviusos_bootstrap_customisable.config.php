@@ -17,8 +17,8 @@ $width_image = '650px';
 $width_standard = '500px';
 $height_wysiwyg = 350;
 
-\Config::load('noviusos_template_bootstrap::skin', true);
-$temp_skin = \Config::get('noviusos_template_bootstrap::skin');
+\Config::load('noviusos_template_bootstrap::skins', true);
+$temp_skin = \Config::get('noviusos_template_bootstrap::skins');
 
 
 foreach ($temp_skin as $key => $value) {

@@ -111,35 +111,35 @@ if (!isset($config['wysiwyg_layout']) || $config['wysiwyg_layout'] == '') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-    <?php
+<?php
 
-    \Config::load('noviusos_template_bootstrap::skin', true);
-    $tab_skin = \Config::get('noviusos_template_bootstrap::skin');
+\Config::load('noviusos_template_bootstrap::skins', true);
+$tab_skin = \Config::get('noviusos_template_bootstrap::skins');
 
-    $str_skin_name = $config['principal']['skin'];
+$str_skin_name = $config['principal']['skin'];
 
-    if ($dom_id) {
-        foreach ($tab_skin as $key => $value) {
-            if ($key == $str_skin_name) {
-                ?>
-                <link title="<?= $key ?>" rel="stylesheet" type="text/css"
-                      href="<?= $value ?>">
-            <?php
-            } else {
-                ?>
-                <link title="<?= $key ?>" rel="alternate stylesheet" type="text/css"
-                      href="<?= $value ?>">
-            <?php
-            }
+if ($dom_id) {
+    foreach ($tab_skin as $key => $value) {
+        if ($key == $str_skin_name) {
+            ?>
+            <link title="<?= $key ?>" rel="stylesheet" type="text/css"
+                  href="<?= $value ?>">
+        <?php
+        } else {
+            ?>
+            <link title="<?= $key ?>" rel="alternate stylesheet" type="text/css"
+                  href="<?= $value ?>">
+        <?php
         }
-    } else {
-        ?>
-        <link title="<?= $tab_skin[$str_skin_name] ?>" rel="stylesheet" type="text/css"
-              href="<?= $tab_skin[$str_skin_name] ?>">
-    <?php
     }
-
+} else {
     ?>
+    <link title="<?= $tab_skin[$str_skin_name] ?>" rel="stylesheet" type="text/css"
+          href="<?= $tab_skin[$str_skin_name] ?>">
+    <?php
+}
+
+?>
     <link rel="stylesheet"
           href="static/apps/noviusos_template_bootstrap/vendor/<?= $template ?>/css/social-buttons-3.css">
 
