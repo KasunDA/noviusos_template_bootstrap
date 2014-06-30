@@ -9,7 +9,7 @@
  */
 
 $iscmd = '12'; //int_size_content medium
-$iscsm ='12'; //int_size_content small
+$iscsm ='9'; //int_size_content small
 $isic = '12';//int_size_inner_content
 $ioc = 'col-md-offset-1 col-sm-offset-1 '; //int_offset_content
 $ioic = '' ;//int_offset_inner_content
@@ -18,36 +18,30 @@ $sidebar_display = ( $config['left']['display'] ?
     ($config['right']['display']? 'both':'left') :
     ($config['right']['display']? 'right':'none'));
 
-switch($sidebar_display) {
+switch ($sidebar_display) {
     case 'left':
         $iscmd = '8';
         $isic = '12';
         $ioic = '';
         $ioc = '';
         break;
-
     case 'right':
         $iscmd = '8';
         $isic = '12';
         $ioic = '';
         break;
-
     case 'both':
         $iscmd = '6';
         $isic = '12';
         $ioic = '';
         $ioc = '';
-
         break;
     case 'none':
         break;
 }
 
-$iscsm = '9';
-
 $str_class_content = '$ioc col-md-'.$iscmd.' col-sm-'.$iscsm.' col-xs-12';
 $str_class_inner_content = $ioic.' col-md-'.$isic.' col-sm-'.$isic.' col-xs-'.$isic;
-
 $style_fixed  = '';
 
 if ($config['header']['fixed']) {
@@ -103,5 +97,3 @@ if ($config['header']['fixed']) {
     ), false);
     ?>
 </div>
-
-
