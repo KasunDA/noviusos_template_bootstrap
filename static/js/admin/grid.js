@@ -20,12 +20,11 @@ define(
                 tpvar_id: ''
             }, data);
 
-            var int_nb_ligne;
-            var int_nb_colonne;
+            var int_nb_lines;
+            var int_nb_rows;
             var tab_grid;
             var int_id_new_cell = 1;
             var tab_css;
-            var compteur = 0;
 
             // initial : at drag/resize start
             // final : at drag/resize stop
@@ -45,36 +44,36 @@ define(
             var h_final_grid; // final height in grid frame
             var w_final_grid; // final width in grid frame
 
-            int_nb_ligne = 12;
-            int_nb_colonne = 12;
-            tab_grid = new Array(int_nb_ligne);
+            int_nb_lines = 12;
+            int_nb_rows = 12;
+            tab_grid = new Array(int_nb_lines);
             int_id_new_cell = 1;
             tab_css = new Array(1);
 
-            function affiche_tab() {
-                var chaine = "";
+            function display_tab() {
+                var tmp_string = "";
 
-                for (var i = 0; i < int_nb_ligne; i++) {
-                    for (var j = 0; j < int_nb_colonne; j++) {
-                        chaine += tab_grid [i][j] + " ";
+                for (var i = 0; i < int_nb_lines; i++) {
+                    for (var j = 0; j < int_nb_rows; j++) {
+                        tmp_string += tab_grid [i][j] + " ";
                     }
-                    chaine = chaine.substr(0, chaine.length - 1);
-                    chaine += "|";
+                    tmp_string = tmp_string.substr(0, tmp_string.length - 1);
+                    tmp_string += "|";
                 }
-                chaine = chaine.substr(0, chaine.length - 1)
-                $('[name="wysiwyg_layout"]').attr("value", chaine);
+                tmp_string = tmp_string.substr(0, tmp_string.length - 1)
+                $('[name="wysiwyg_layout"]').attr("value", tmp_string);
             }
 
             //--------------------------------------
             // Init JS table
             //--------------------------------------
 
-            for (var i = 0; i < int_nb_ligne; i++) {
-                tab_grid[i] = new Array(int_nb_colonne);
+            for (var i = 0; i < int_nb_lines; i++) {
+                tab_grid[i] = new Array(int_nb_rows);
             }
 
-            for (var i = 0; i < int_nb_ligne; i++) {
-                for (var j = 0; j < int_nb_colonne; j++) {
+            for (var i = 0; i < int_nb_lines; i++) {
+                for (var j = 0; j < int_nb_rows; j++) {
                     tab_grid [i][j] = 0;
                 }
             }
@@ -85,16 +84,16 @@ define(
 
             //$("#div_grid").html("");
 
-            for (var i = 0; i < int_nb_ligne; i++) {
+            for (var i = 0; i <int_nb_lines; i++) {
                 $("#div_grid").prepend("<div id='div_l" + i + "' class='row'></div>");
-                for (var j = 0; j < int_nb_colonne; j++) {
+                for (var j = 0; j < int_nb_rows; j++) {
                     $("#div_l" + i).append("<div id='div_l" + i + "_c" + j + "' class='cell'></div>");
                 }
             }
 
 
-            var chaine_tab = $('[name="wysiwyg_layout"]').val();
-            load_grid(chaine_tab);
+            var string_tab = $('[name="wysiwyg_layout"]').val();
+            load_grid(string_tab);
 
             $(".grid_pattern").click(function () {
                 load_grid($(this).find('input[type="hidden"]').val());
@@ -119,8 +118,8 @@ define(
             // Clear the grid
             $("button[id='btn_vider']").click(function () {
 
-                for (var t = 0; t < int_nb_ligne; t++) {
-                    for (var s = 0; s < int_nb_colonne; s++) {
+                for (var t = 0; t < int_nb_lines; t++) {
+                    for (var s = 0; s < int_nb_rows; s++) {
                         tab_grid[t][s] = 0;
                     }
                 }
@@ -260,9 +259,9 @@ define(
             // Add an element
             $(".template-e-block-grid").on("click", "#btn_ajout", function (e) {
 
-                boucle:
-                    for (var i = 0; i < int_nb_ligne; i++) {
-                        for (var j = 0; j < int_nb_colonne; j++) {
+                buckle:
+                    for (var i = 0; i < int_nb_lines; i++) {
+                        for (var j = 0; j < int_nb_rows; j++) {
                             if (tab_grid[i][j] == 0) {
                                 tab_grid[i][j] = "" + int_id_new_cell;
                                 x_init_px = (4 + (i) * 48);
@@ -270,7 +269,7 @@ define(
                                 $(".selected").removeClass("selected");
                                 $("#div_grid").append('<div class="cell_new selected" data-new ="' + int_id_new_cell + '" style="top :' + x_init_px + 'px ;left :' + y_init_px + 'px"></div>');
                                 int_id_new_cell++;
-                                break boucle;
+                                break buckle;
                             }
                         }
                     }
@@ -280,11 +279,11 @@ define(
             });
 
             $(".template-e-block-grid").on('dragstop resizestop click', '.cell_new', function (e, ui) {
-                affiche_tab();
+                display_tab();
             });
 
             $(".template-e-block-grid").on('click', '#btn_ajout , #btn_suppr , #btn_vider', function () {
-                affiche_tab();
+                display_tab();
             });
 
 
@@ -302,14 +301,14 @@ define(
                 $(".cell_new").remove();
 
                 if (chaine_tab == "") {
-                    temp_tab = new Array(int_nb_ligne);
+                    temp_tab = new Array(int_nb_lines);
 
-                    for (var i = 0; i < int_nb_ligne; i++) {
-                        temp_tab[i] = new Array(int_nb_colonne);
+                    for (var i = 0; i < int_nb_lines; i++) {
+                        temp_tab[i] = new Array(int_nb_rows);
                     }
 
-                    for (var i = 0; i < int_nb_ligne; i++) {
-                        for (var j = 0; j < int_nb_colonne; j++) {
+                    for (var i = 0; i < int_nb_lines; i++) {
+                        for (var j = 0; j < int_nb_rows; j++) {
                             temp_tab [i][j] = 0;
                         }
                     }
