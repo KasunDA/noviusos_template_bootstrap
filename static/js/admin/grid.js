@@ -340,7 +340,7 @@ define(
                                 w++;
                             }
 
-                            $div_grid..append('<div class="cell_new " data-new ="' + val + '" ' +
+                            $div_grid.append('<div class="cell_new " data-new ="' + val + '" ' +
                                 'style="top :' + (4 + x * 48) + 'px ;left :' + (4 + y * 48) + 'px ; width :' + (40 + ((w - 1) * 48)) + 'px ; height :' + (40 + ((h - 1) * 48)) + 'px"></div>');
                             int_id_new_cell = parseInt(val) + 1;
                         }
