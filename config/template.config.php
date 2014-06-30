@@ -33,7 +33,7 @@ return array(
         'title' => __('Hello world!'),
         'content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam gravida libero vel magna cursus semper.</p>',
         'button' => array(
-            'title' => 'Learn more',
+            'title' => __('Learn more'),
             'link' => '#',
         ),
     ),
