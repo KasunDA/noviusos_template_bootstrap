@@ -36,7 +36,7 @@ class Controller_Admin_Visualise extends \Nos\Template\Variation\Controller_Admi
             $page->template_variation = $tpvar;
             $this->_contexts_possibles[$context] = Tools_Url::context($context);
             $page->page_id = 0;
-            $page->page_title = __('Lorem Ipsum');
+            $page->page_title = 'Lorem Ipsum';
             $page->page_entrance = 1;
 
             $this->setPage($page);

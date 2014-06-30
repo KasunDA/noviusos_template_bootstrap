@@ -6,9 +6,9 @@
  *             http://www.gnu.org/licenses/agpl-3.0.html
  * @link http://www.novius-os.org
  */
-(function($) {
+(function ($) {
 
-    $.templateBootstrap = function(params) {
+    $.templateBootstrap = function (params) {
         params = $.extend({
             dom_id: '',
             texts: {
@@ -21,7 +21,6 @@
             var $parentWindowDom = parent.$(params.dom_id);
             var parentWindow$ = parent.$;
             var $dialogsContent = $parentWindowDom.find('.template-e-block');
-
 
             // Add Button for customisation
             $('.customisable').each(function () {
@@ -101,19 +100,19 @@
                 return false;
             })
 
-            var wysiwyg_enhancer = function() {
+            var wysiwyg_enhancer = function () {
                 var $enhancer = $(this);
                 var enhancer_id = $enhancer.data('enhancer');
-                var data      = $.extend(true, {enhancer: enhancer_id}, $enhancer.data('config'));
+                var data = $.extend(true, {enhancer: enhancer_id}, $enhancer.data('config'));
                 $.ajax({
                     url: 'admin/noviusos_template_bootstrap/ajax/enhancer',
                     type: 'POST',
                     dataType: 'json',
                     data: data,
-                    success: function(json) {
+                    success: function (json) {
                         $enhancer.html($.trim(json.preview));
                     },
-                    error: function() {
+                    error: function () {
                         $enhancer.html('Error');
                     }
                 });
@@ -191,33 +190,26 @@
                             twitter(document, 'script', 'twitter-wjs');
                         }
 
-                        if($div.hasClass("template-e-principal")){
+                        if ($div.hasClass("template-e-principal")) {
                             $('head style').html($div.find('[name="css_style"]').val());
                         }
 
-                        if($div.hasClass("template-e-block-grid")){
+                        if ($div.hasClass("template-e-block-grid")) {
                             var val_tab = $div.find('[name="wysiwyg_layout"]').attr("value");
 
                             $.ajax({
-
-                                url : "admin/noviusos_template_bootstrap/ajax/grid",
+                                url: "admin/noviusos_template_bootstrap/ajax/grid",
                                 type: "POST",
                                 dataType: "html",
-                                data : "grid="+val_tab,
-                                error : function(){
+                                data: "grid=" + val_tab,
+                                error: function () {
                                     log('Error in template creation');
                                 },
-                                success : function(msg){
+                                success: function (msg) {
                                     $("#grid_content_layout").html(msg);
                                 }
-
-
                             });
-
-
                         }
-
-
                     }
                 });
             });
@@ -264,7 +256,6 @@
                                 $(name).show();
                             }
 
-
                             // Display of Select options
                             if (name.search("panel") != -1) {
                                 count_panel++
@@ -277,14 +268,11 @@
                                 if ($input.val() == params.texts.newPanel) {
                                     $dialogsContent.find($input.data("admin-target")).text(params.texts.newPanel);
                                 }
-
                             }
                             else {
                                 $select.find('[value = "' + $checkbox.attr("name") + '"]').hide();
                             }
                         }
-
-
                     }
                 };
 
@@ -343,7 +331,6 @@
                         }
                     }
 
-
                     var $checkbox = $div.find("[name='" + $option_name + "']");
 
                     if (temp_option_name == 'panel') {
@@ -359,7 +346,6 @@
                     var $bloc = $($checkbox.data("target"));
                     $bloc.appendTo($bloc.parent());
 
-
                     if ($checkbox.prop("checked") == false) {
                         $checkbox.trigger("click");
                     }
@@ -372,31 +358,26 @@
                 });
 
                 $div.find(".btn_write_panel").on('click', function (e) {
-
                     var $button = parentWindow$(this);
-                    var $label =  $div.find('#label_'+$button.data("input"));
-                    var $checkbox = $div.find('#'+$label.attr("for"));
+                    var $label = $div.find('#label_' + $button.data("input"));
+                    var $checkbox = $div.find('#' + $label.attr("for"));
                     var $input = $("<input type='text'>");
                     $label.parent().parent().enableSelection();
                     $label.replaceWith($('<input/>').attr('type', 'text')
                         .val($label.text())
-                        .attr("value" , $label.text())
-                        .attr("name" , "ipt_temp")
-                        .blur(function(){
-
+                        .attr("value", $label.text())
+                        .attr("name", "ipt_temp")
+                        .blur(function () {
                             $(this).replaceWith($label.html($(this).val()));
-                            $($checkbox.data("target")+" .panel-title").html($(this).val());
+                            $($checkbox.data("target") + " .panel-title").html($(this).val());
                             $dialogsContent.find($checkbox.data("admin-target")).val($(this).val());
                             $label.parent().parent().disableSelection();
                         })
-
-
                     );
                     $div.find(":text").focus();
                 });
             });
-
-
+            
             $parentWindowDom.find('.template-e-header').nosOnShow('one', function () {
                 var $div = parentWindow$(this);
                 var $select_title = $div.find('select[name="header-type"]');
@@ -437,23 +418,26 @@
                 });
 
                 $div.find(":checkbox[name='header-fixed']").click(function () {
+                    var $header = $("#header").parent();
+                    var $middle_content = $("#middle_content").parent();
+                    var $footer = $("#footer");
+                    var $button = $("#principal > button");
+
                     if ($(this).prop("checked") == true) {
-                        $("#header").parent().addClass("header-fixed");
-                        $("#middle_content").parent().addClass("middle-header-fixed");
-                        $("#footer").addClass("middle-header-fixed");
-                        $("#principal > button").css("position", "fixed").css("z-index", "50");
+                        $header.addClass("header-fixed");
+                        $middle_content.addClass("middle-header-fixed");
+                        $footer.addClass("middle-header-fixed");
+                        $button.css("position", "fixed").css("z-index", "50");
                     }
                     else {
 
-                        $("#header").parent().removeClass("header-fixed");
-                        $("#middle_content").parent().attr("class", "row");
-                        $("#footer").removeClass("middle-header-fixed");
-                        $("#principal > button").css("position", "absolute").css("z-index", "40");
+                        $header.removeClass("header-fixed");
+                        $middle_content.attr("class", "row");
+                        $footer.removeClass("middle-header-fixed");
+                        $button.css("position", "absolute").css("z-index", "40");
                     }
 
                 });
-
-
             });
 
             $parentWindowDom.find('.template-e-principal').nosOnShow('one', function () {
@@ -465,10 +449,8 @@
                     var writeClasses = function (oldC, newC) {
                         var tab_old = oldC.split(" ");
                         var tab_new = newC.split(" ");
-
                         var string_old = "";
                         var string_new = "";
-
                         var lock = false;
 
                         for (var i = 0; i < tab_old.length; i++) {
@@ -506,34 +488,36 @@
                     var $middle_content = $("#middle_content");
                     var tab;
 
+                    var $left = $("#side-left");
+                    var $right = $("#side-right");
                     switch ($select.val()) {
                         case "left":
-                            $("#side-left").show("slow");
-                            $("#side-right").hide("slow");
+                            $left.show("slow");
+                            $right.hide("slow");
 
                             tab = writeClasses($middle_content.attr("class"), " col-md-8 col-sm-9 col-xs-12")
                             $middle_content.switchClass(tab[0], tab[1]);
                             break;
 
                         case "right":
-                            $("#side-right").show("slow");
-                            $("#side-left").hide("slow");
+                            $right.show("slow");
+                            $left.hide("slow");
 
                             tab = writeClasses($middle_content.attr("class"), "col-md-offset-1 col-sm-offset-1 col-md-8 col-sm-9 col-xs-12");
                             $middle_content.switchClass(tab[0], tab[1]);
                             break;
 
                         case "none":
-                            $("#side-right").hide("slow");
-                            $("#side-left").hide("slow");
+                            $right.hide("slow");
+                            $left.hide("slow");
 
                             tab = writeClasses($middle_content.attr("class"), "col-md-offset-1 col-sm-offset-1 col-md-10 col-sm-9 col-xs-12");
                             $middle_content.switchClass(tab[0], tab[1]);
                             break;
 
                         case "both":
-                            $("#side-right").show("slow");
-                            $("#side-left").show("slow");
+                            $right.show("slow");
+                            $left.show("slow");
                             tab = writeClasses($middle_content.attr("class"), "col-md-6 col-sm-9 col-xs-12");
                             $middle_content.switchClass(tab[0], tab[1]);
                             break;
@@ -552,15 +536,15 @@
                 // Checkbox  Fixed background
                 $fixed_background = $div.find(":checkbox[name='principal-background_fixed_display']");
 
-                $fixed_background.click(function(){
-                    if($(this).prop("checked")){
-                        $("body").css("background-attachment" , "fixed");
+                $fixed_background.click(function () {
+                    var $body = $("body");
+                    if ($(this).prop("checked")) {
+                        $body.css("background-attachment", "fixed");
                     }
-                    else{
-                        $("body").css("background-attachment" , "inerit");
+                    else {
+                        $body.css("background-attachment", "inerit");
                     }
                 });
-
             });
 
             $parentWindowDom.find('.template-e-block').nosOnShow('one', function () {
@@ -582,24 +566,19 @@
                         var tab_temp = "";
 
                         $("body").css({
-                            backgroundRepeat : "initial",
-                            backgroundPosition:"initial"
-                        }).css("background-size" , "initial");
+                            backgroundRepeat: "initial",
+                            backgroundPosition: "initial"
+                        }).css("background-size", "initial");
 
-                        if($div.find(":checkbox[name='principal-background_fixed_display']").prop("checked"))
-                        {
-                            $("body").css("background-attachement" , "fixed");
+                        if ($div.find(":checkbox[name='principal-background_fixed_display']").prop("checked")) {
+                            $("body").css("background-attachement", "fixed");
                         }
 
-                        for(var i = 0; i < temp.length ; i++)
-                        {
+                        for (var i = 0; i < temp.length; i++) {
                             tab_temp = temp[i].split(":");
                             $("body").css($.trim(tab_temp[0]), $.trim(tab_temp[1]));
-
                         }
-
-                    }
-                    else if (inputTarget.search(" link") != -1) {
+                    } else if (inputTarget.search(" link") != -1) {
                         $field = $(inputTarget.split(' link')[0]);
                         if ($input.val() == "") {
                             $field.attr("href", "");
@@ -608,15 +587,14 @@
                         }
 
                         $(".social > li > a ").each(function () {
-                            if ($(this).attr("href") != "") {
-                                $(this).parent().show();
-                            }
-                            else {
-                                $(this).parent().hide();
+                            var $this = $(this);
+                            if ($this.attr("href") != "") {
+                                $this.parent().show();
+                            } else {
+                                $this.parent().hide();
                             }
                         });
-                    }
-                    else {
+                    } else {
                         $field.html($input.val())
                         $divfield.html($input.val());
                     }
@@ -651,7 +629,6 @@
                                     case 'footer':
                                         selector = 'list-footer-menu';
                                         break;
-
                                 }
                                 if (data != "") {
                                     $('#' + selector).replaceWith(data);
@@ -673,15 +650,12 @@
                             case 'footer':
                                 selector = 'list-footer-menu';
                                 break;
-
                         }
                         $('#' + selector).hide();
                     }
                 });
 
                 $div.find(".ui-inputfilethumb-fileaction").click(function () {
-
-
                     $div.find(":text[name*='medias->']").val("").trigger("change");
                 });
 
@@ -710,7 +684,6 @@
                         }
                     };
 
-
                     if ($input.val()) {
                         $.ajax({
                             method: 'GET',
@@ -725,8 +698,6 @@
                     }
                 });
             });
-
-
         });
 
         function checkboxController($checkbox, $component) {

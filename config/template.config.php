@@ -73,7 +73,7 @@ return array(
                     'panel_1' => array(
                         'type' => 'panel',
                         'display' => true, // option : true ,false
-                        'title' => __('Lorem ipsum'),
+                        'title' => 'Lorem ipsum',
                         'content' => ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quis consequat ligula. Quisque et ipsum non lacus porta lobortis a in lacus. Suspendisse venenatis nulla eget est lacinia rhoncus. Phasellus ac pretium lacus. Fusce elit enim, tincidunt id nibh id, lacinia varius erat. Nulla ornare imperdiet mattis. Curabitur neque orci, tincidunt eu ante a, semper tincidunt dui. Mauris cursus, mauris sed varius adipiscing, lectus leo ultricies velit, in ornare mi massa eget dui. Aliquam hendrerit lobortis turpis, eu elementum nunc tempus vel. Nulla luctus massa nec tellus congue posuere. Praesent vestibulum mauris enim, vel luctus odio dignissim ac. Donec elit ante, rhoncus semper nibh id, euismod eleifend elit. Suspendisse tincidunt sit amet ante ac sagittis. Nunc ac erat eleifend, semper massa nec, hendrerit est. Donec tristique in nunc nec feugiat. '
                         ),
                     'panel_2' => array(

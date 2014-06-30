@@ -50,9 +50,12 @@ define(
             int_id_new_cell = 1;
             tab_css = new Array(1);
 
+            var $wysiwyg_layout = $('[name="wysiwyg_layout"]');
+            var $block_grid = $(".template-e-block-grid");
+            var $div_grid = $("#div_grid");
+
             function display_tab() {
                 var tmp_string = "";
-
                 for (var i = 0; i < int_nb_lines; i++) {
                     for (var j = 0; j < int_nb_rows; j++) {
                         tmp_string += tab_grid [i][j] + " ";
@@ -61,7 +64,7 @@ define(
                     tmp_string += "|";
                 }
                 tmp_string = tmp_string.substr(0, tmp_string.length - 1)
-                $('[name="wysiwyg_layout"]').attr("value", tmp_string);
+                $wysiwyg_layout.attr("value", tmp_string);
             }
 
             //--------------------------------------
@@ -82,23 +85,19 @@ define(
             // Init Html Grid
             //--------------------------------------
 
-            //$("#div_grid").html("");
-
             for (var i = 0; i <int_nb_lines; i++) {
-                $("#div_grid").prepend("<div id='div_l" + i + "' class='row'></div>");
+                $div_grid.prepend("<div id='div_l" + i + "' class='row'></div>");
                 for (var j = 0; j < int_nb_rows; j++) {
                     $("#div_l" + i).append("<div id='div_l" + i + "_c" + j + "' class='cell'></div>");
                 }
             }
 
-
-            var string_tab = $('[name="wysiwyg_layout"]').val();
+            var string_tab = $wysiwyg_layout.val();
             load_grid(string_tab);
 
             $(".grid_pattern").click(function () {
                 load_grid($(this).find('input[type="hidden"]').val());
             });
-
 
             //--------------------------------------
             // Keybord control
@@ -128,17 +127,16 @@ define(
 
             // Delete an element
             $("button[id='btn_suppr']").click(function () {
-
                 var cell = $(".selected");
 
-                x_init_px = $(cell).css("top");
-                y_init_px = $(cell).css("left");
+                x_init_px = cell.css("top");
+                y_init_px = cell.css("left");
 
                 x_init_grid = (parseInt(x_init_px) - 4) / 48;
                 y_init_grid = (parseInt(y_init_px) - 4) / 48;
 
-                h_init_grid = ((parseInt($(cell).css("height")) - 40) / 48 ) + 1;
-                w_init_grid = ((parseInt($(cell).css("width")) - 40) / 48) + 1;
+                h_init_grid = ((parseInt(cell.css("height")) - 40) / 48 ) + 1;
+                w_init_grid = ((parseInt(cell.css("width")) - 40) / 48) + 1;
 
                 for (var t = x_init_grid; t < h_init_grid + x_init_grid; t++) {
                     for (var s = y_init_grid; s < w_init_grid + y_init_grid; s++) {
@@ -148,29 +146,30 @@ define(
                 $(".selected").remove();
             });
 
-            $(".template-e-block-grid").on("dragstart", ".cell_new", function (e, ui) {
+            $block_grid.on("dragstart", ".cell_new", function (e, ui) {
                 x_init_px = $(this).css("top");
                 y_init_px = $(this).css("left");
                 $(this).trigger("click");
             });
 
-            $(".template-e-block-grid").on("dragstop", ".cell_new", function (event, ui) {
+            $block_grid.on("dragstop", ".cell_new", function (event, ui) {
 
                 var collision = false;
 
-                x_final_grid = (parseInt($(this).css("top")) - 4) / 48;
-                y_final_grid = (parseInt($(this).css("left")) - 4) / 48;
+                var $this = $(this);
+                x_final_grid = (parseInt($this.css("top")) - 4) / 48;
+                y_final_grid = (parseInt($this.css("left")) - 4) / 48;
 
                 x_init_grid = (parseInt(x_init_px) - 4) / 48;
                 y_init_grid = (parseInt(y_init_px) - 4) / 48;
 
-                h_final_grid = ((parseInt($(this).css("height")) - 40) / 48 ) + 1;
-                w_final_grid = ((parseInt($(this).css("width")) - 40) / 48) + 1;
+                h_final_grid = ((parseInt($this.css("height")) - 40) / 48 ) + 1;
+                w_final_grid = ((parseInt($this.css("width")) - 40) / 48) + 1;
 
                 collision:
                     for (var t = x_final_grid; t < h_final_grid + x_final_grid; t++) {
                         for (var s = y_final_grid; s < w_final_grid + y_final_grid; s++) {
-                            if (tab_grid[t][s] != 0 && tab_grid[t][s] != $(this).attr("data-new")) {
+                            if (tab_grid[t][s] != 0 && tab_grid[t][s] != $this.attr("data-new")) {
                                 collision = true
                                 break collision;
                             }
@@ -178,9 +177,9 @@ define(
                     }
 
                 if (collision) {
-                    $(this).draggable('disable');
-                    var $obj = $(this);
-                    $(this).animate({
+                    $this.draggable('disable');
+                    var $obj = $this;
+                    $this.animate({
                         top: x_init_px,
                         left: y_init_px
                     }, 200, function () {
@@ -198,26 +197,28 @@ define(
 
                     for (var t = x_final_grid; t < h_final_grid + x_final_grid; t++) {
                         for (var s = y_final_grid; s < w_final_grid + y_final_grid; s++) {
-                            tab_grid[t][s] = $(this).attr("data-new");
+                            tab_grid[t][s] = $this.attr("data-new");
                         }
                     }
                 }
             });
 
-            $(".template-e-block-grid").on("resizestart", ".cell_new", function (e, ui) {
-                h_init_px = $(this).css("height");
-                w_init_px = $(this).css("width");
-                $(this).trigger("click");
+            $block_grid.on("resizestart", ".cell_new", function (e, ui) {
+                var $this = $(this);
+                h_init_px = $this.css("height");
+                w_init_px = $this.css("width");
+                $this.trigger("click");
             });
 
-            $(".template-e-block-grid").on("resizestop", ".cell_new", function (e, ui) {
+            $block_grid.on("resizestop", ".cell_new", function (e, ui) {
                 var collision = false;
 
-                x_final_grid = (parseInt($(this).css("top")) - 4) / 48;
-                y_final_grid = (parseInt($(this).css("left")) - 4) / 48;
+                var $this = $(this);
+                x_final_grid = (parseInt($this.css("top")) - 4) / 48;
+                y_final_grid = (parseInt($this.css("left")) - 4) / 48;
 
-                h_final_px = $(this).css("height");
-                w_final_px = $(this).css("width");
+                h_final_px = $this.css("height");
+                w_final_px = $this.css("width");
 
                 h_init_grid = ((parseInt(h_init_px) - 40) / 48 ) + 1;
                 w_init_grid = ((parseInt(w_init_px) - 40) / 48) + 1;
@@ -229,7 +230,7 @@ define(
                     for (var t = x_final_grid; t < x_final_grid + h_final_grid; t++) {
 
                         for (var s = y_final_grid; s < y_final_grid + w_final_grid; s++) {
-                            if (tab_grid[t][s] != 0 && tab_grid[t][s] != $(this).attr("data-new")) {
+                            if (tab_grid[t][s] != 0 && tab_grid[t][s] != $this.attr("data-new")) {
                                 collision = true
                                 break collision;
                             }
@@ -237,7 +238,7 @@ define(
                     }
 
                 if (collision) {
-                    $(this).animate({
+                    $this.animate({
                         width: w_init_px,
                         height: h_init_px
                     }, 200);
@@ -250,14 +251,14 @@ define(
 
                     for (var t = x_final_grid; t < x_final_grid + h_final_grid; t++) {
                         for (var s = y_final_grid; s < y_final_grid + w_final_grid; s++) {
-                            tab_grid[t][s] = $(this).attr("data-new");
+                            tab_grid[t][s] = $this.attr("data-new");
                         }
                     }
                 }
             });
 
             // Add an element
-            $(".template-e-block-grid").on("click", "#btn_ajout", function (e) {
+            $block_grid.on("click", "#btn_ajout", function (e) {
 
                 buckle:
                     for (var i = 0; i < int_nb_lines; i++) {
@@ -267,25 +268,23 @@ define(
                                 x_init_px = (4 + (i) * 48);
                                 y_init_px = (4 + (j) * 48);
                                 $(".selected").removeClass("selected");
-                                $("#div_grid").append('<div class="cell_new selected" data-new ="' + int_id_new_cell + '" style="top :' + x_init_px + 'px ;left :' + y_init_px + 'px"></div>');
+                                $div_grid.append('<div class="cell_new selected" data-new ="' + int_id_new_cell + '" style="top :' + x_init_px + 'px ;left :' + y_init_px + 'px"></div>');
                                 int_id_new_cell++;
                                 break buckle;
                             }
                         }
                     }
                 e.stopPropagation();
-
                 activeNewCell();
             });
 
-            $(".template-e-block-grid").on('dragstop resizestop click', '.cell_new', function (e, ui) {
+            $block_grid.on('dragstop resizestop click', '.cell_new', function (e, ui) {
                 display_tab();
             });
 
-            $(".template-e-block-grid").on('click', '#btn_ajout , #btn_suppr , #btn_vider', function () {
+            $block_grid.on('click', '#btn_ajout , #btn_suppr , #btn_vider', function () {
                 display_tab();
             });
-
 
             function rgb2hex(rgb) {
                 rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
@@ -294,7 +293,6 @@ define(
                     ("0" + parseInt(rgb[2], 10).toString(16)).slice(-2) +
                     ("0" + parseInt(rgb[3], 10).toString(16)).slice(-2);
             }
-
 
             function load_grid(chaine_tab) {
                 var temp_tab;
@@ -342,16 +340,13 @@ define(
                                 w++;
                             }
 
-                            $("#div_grid").append('<div class="cell_new " data-new ="' + val + '" ' +
+                            $div_grid..append('<div class="cell_new " data-new ="' + val + '" ' +
                                 'style="top :' + (4 + x * 48) + 'px ;left :' + (4 + y * 48) + 'px ; width :' + (40 + ((w - 1) * 48)) + 'px ; height :' + (40 + ((h - 1) * 48)) + 'px"></div>');
                             int_id_new_cell = parseInt(val) + 1;
                         }
                     }
                 }
-
-
                 activeNewCell();
-
                 $(".cell_new:first").trigger("resizestop");
             }
 
