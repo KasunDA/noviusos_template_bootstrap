@@ -853,7 +853,7 @@ return array(
                     'type' => 'select',
                     'options' => array(
                         '' => __('Add a component'),
-                        'panel' => __('Panel '),
+                        'panel' => __('Panel'),
                         'left-blocks-social-display' => __('Social'),
                         'left-blocks-twitter-display' => __('Twitter'),
                         'left-blocks-menu-display' => __('Menu'),
