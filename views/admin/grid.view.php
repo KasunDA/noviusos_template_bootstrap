@@ -16,10 +16,14 @@ $content = (string) View::forge($content['view'], $view_params + $content['param
 
 \Nos\I18n::current_dictionary('noviusos_template_bootstrap::common', 'nos::common');
 
+$js = 'static/apps/noviusos_template_bootstrap/js/admin/grid.js';
+if (\Config::get('novius-os.assets_minified', true)) {
+    $js = 'static/apps/noviusos_template_bootstrap/js/admin/grid.min.js';
+}
 ?>
 
 <script type="text/javascript">
-    require(['jquery-nos', 'static/apps/noviusos_template_bootstrap/js/admin/grid.js'], function ($, callback_fn) {
+    require(['jquery-nos', <?= \Format::forge($js)->to_json() ?>], function ($, callback_fn) {
         $(function () {
             callback_fn(<?= \Format::forge($data)->to_json() ?>);
         });

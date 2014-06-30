@@ -16,8 +16,12 @@ $params = array(
         'newPanel' => __('New Panel'),
     ),
 );
+$js = 'static/apps/noviusos_template_bootstrap/js/admin/iframe.js';
+if (\Config::get('novius-os.assets_minified', true)) {
+    $js = 'static/apps/noviusos_template_bootstrap/js/admin/iframe.min.js';
+}
 ?>
-<script type="text/javascript" src="static/apps/noviusos_template_bootstrap/js/admin/iframe.js"></script>
+<script type="text/javascript" src="<?= $js ?>"></script>
 <script type="text/javascript">
     $.templateBootstrap(<?= \Format::forge($params)->to_json() ?>);
 </script>

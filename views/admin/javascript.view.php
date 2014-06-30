@@ -18,10 +18,14 @@ $data = array(
         'managePanel' => __('Manage'),
         'editPanelName' => __('Edit name'),
     ),
-)
+);
+$js = 'static/apps/noviusos_template_bootstrap/js/admin/layout.js';
+if (\Config::get('novius-os.assets_minified', true)) {
+    $js = 'static/apps/noviusos_template_bootstrap/js/admin/layout.min.js';
+}
 ?>
 <script type="text/javascript">
-    require(['jquery-nos', 'static/apps/noviusos_template_bootstrap/js/admin/layout.js'], function ($, callback_fn) {
+    require(['jquery-nos', <?= \Format::forge($js)->to_json() ?>], function ($, callback_fn) {
         $(function () {
             callback_fn(<?= \Format::forge($data)->to_json() ?>);
         });

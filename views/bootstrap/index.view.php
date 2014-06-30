@@ -13,7 +13,7 @@
 $config = \Config::get('noviusos_template_bootstrap::template');
 
 // cast to array because data can not be initialise
-foreach ((array)$page->template_variation->tpvar_data as $key => $value) {
+foreach ((array) $page->template_variation->tpvar_data as $key => $value) {
     if ($key == 'principal-background_style' && $value == '') {
         $config['principal']['background_style'] = '';
     } elseif ($key == 'principal-background_fixed_display' && $value == '') {
@@ -103,7 +103,8 @@ if (!isset($config['wysiwyg_layout']) || $config['wysiwyg_layout'] == '') {
     }
     $temp = substr($temp, 0, strlen($temp) - 1);
     $config['wysiwyg_layout'] = $temp;
-};?>
+}
+?>
 <!doctype html>
 <html>
 <head>
@@ -139,6 +140,10 @@ if ($dom_id) {
     <?php
 }
 
+$js = 'static/apps/noviusos_template_bootstrap/js/script.js';
+if (\Config::get('novius-os.assets_minified', true)) {
+    $js = 'static/apps/noviusos_template_bootstrap/js/script.min.js';
+}
 ?>
     <link rel="stylesheet"
           href="static/apps/noviusos_template_bootstrap/vendor/<?= $template ?>/css/social-buttons-3.css">
@@ -172,7 +177,7 @@ if ($dom_id) {
     <script src="static/apps/noviusos_template_bootstrap/vendor/<?= $template ?>/js/less-1.7.0.min.js"></script>
     <script
         src="static/apps/noviusos_template_bootstrap/vendor/<?= $template ?>/js/script.<?= $template ?>.js"></script>
-    <script src="static/apps/noviusos_template_bootstrap/js/script.js"></script>
+    <script src="<?= $js ?>"></script>
 
     <style>
         <?=$config['css_style'] ?>
