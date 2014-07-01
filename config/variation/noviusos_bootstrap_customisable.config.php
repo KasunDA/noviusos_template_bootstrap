@@ -1025,7 +1025,7 @@ return array(
                 'form' => array(
                     'type' => 'text',
                     'data-target' => '#left-facebook a link',
-                    'placeholder' => "https://www.facebook.com/UserName"
+                    'placeholder' => "https://www.facebook.com/".__("UserName")
                 ),
             ),
             'left-blocks-social-list-twitter-link' => array(
@@ -1033,7 +1033,7 @@ return array(
                 'form' => array(
                     'type' => 'text',
                     'data-target' => '#left-twitter a link',
-                    'placeholder' => "https://twitter.com/UserName"
+                    'placeholder' => "https://twitter.com/".__("UserName")
                 ),
             ),
             'left-blocks-social-list-google_plus-link' => array(
@@ -1041,7 +1041,7 @@ return array(
                 'form' => array(
                     'type' => 'text',
                     'data-target' => '#left-google_plus a link',
-                    'placeholder' => "https://plus.google.com/UserName"
+                    'placeholder' => "https://plus.google.com/".__("UserName")
                 ),
             ),
             'left-blocks-social-list-github-link' => array(
@@ -1049,7 +1049,7 @@ return array(
                 'form' => array(
                     'type' => 'text',
                     'data-target' => '#left-github a link',
-                    'placeholder' => "https://github.com/UserName"
+                    'placeholder' => "https://github.com/".__("UserName")
                 ),
             ),
 
@@ -1307,7 +1307,7 @@ return array(
                 'form' => array(
                     'type' => 'text',
                     'data-target' => '#right-facebook a link',
-                    'placeholder' => "https://www.facebook.com/UserName"
+                    'placeholder' => "https://www.facebook.com/".__("UserName")
                 ),
             ),
             'right-blocks-social-list-twitter-link' => array(
@@ -1315,7 +1315,7 @@ return array(
                 'form' => array(
                     'type' => 'text',
                     'data-target' => '#right-twitter a link',
-                    'placeholder' => "https://twitter.com/UserName"
+                    'placeholder' => "https://twitter.com/".__("UserName")
                 ),
             ),
             'right-blocks-social-list-google_plus-link' => array(
@@ -1323,7 +1323,7 @@ return array(
                 'form' => array(
                     'type' => 'text',
                     'data-target' => '#right-google_plus a link',
-                    'placeholder' => "https://plus.google.com/UserName"
+                    'placeholder' => "https://plus.google.com/".__("UserName")
                 ),
             ),
             'right-blocks-social-list-github-link' => array(
@@ -1331,7 +1331,7 @@ return array(
                 'form' => array(
                     'type' => 'text',
                     'data-target' => '#right-github a link',
-                    'placeholder' => "https://github.com/UserName"
+                    'placeholder' => "https://github.com/".__("UserName")
                 ),
             ),
 
