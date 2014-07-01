@@ -511,7 +511,7 @@
                             $right.hide("slow");
                             $left.hide("slow");
 
-                            tab = writeClasses($middle_content.attr("class"), "col-md-offset-1 col-sm-offset-1 col-md-10 col-sm-9 col-xs-12");
+                            tab = writeClasses($middle_content.attr("class"), "col-md-12 col-sm-12 col-xs-12");
                             $middle_content.switchClass(tab[0], tab[1]);
                             break;
 

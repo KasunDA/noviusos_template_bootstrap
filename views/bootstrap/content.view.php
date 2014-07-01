@@ -37,10 +37,11 @@ switch ($sidebar_display) {
         $ioc = '';
         break;
     case 'none':
+        $ioc = "";
         break;
 }
 
-$str_class_content = '$ioc col-md-'.$iscmd.' col-sm-'.$iscsm.' col-xs-12';
+$str_class_content = $ioc.' col-md-'.$iscmd.' col-sm-'.$iscsm.' col-xs-12';
 $str_class_inner_content = $ioic.' col-md-'.$isic.' col-sm-'.$isic.' col-xs-'.$isic;
 $style_fixed  = '';
 
