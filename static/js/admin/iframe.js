@@ -13,7 +13,7 @@
             dom_id: '',
             texts: {
                 newPanel: 'New Panel',
-                ok : 'Ok'
+                ok : 'OK'
             }
         }, params);
 
