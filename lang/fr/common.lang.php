@@ -28,7 +28,7 @@ return array(
     'New Panel' => 'Nouveau panneau',
 
     #: config/variation/noviusos_bootstrap_customisable.config.php:126
-    'Wysiwyg shape' => 'Forme du Wysiwyg',
+    'WYSIWYG areas' => 'Zones WYSIWYG',
 
     #: config/variation/noviusos_bootstrap_customisable.config.php:147
     'Main settings' => 'Configuration principale',
@@ -133,16 +133,16 @@ return array(
 
     #: config/variation/noviusos_bootstrap_customisable.config.php:640
     #: config/variation/noviusos_bootstrap_customisable.config.php:644
-    'Background image' => 'Image d\'arrière plan',
+    'Background image' => 'Image d’arrière plan',
 
     #: config/variation/noviusos_bootstrap_customisable.config.php:653
-    'Fixed background image' => 'Image d\'arrière plan fixe',
+    'Fixed background image' => 'Image d’arrière plan fixe',
 
     #: config/variation/noviusos_bootstrap_customisable.config.php:661
-    'Background style' => 'Style d\'arrière-plan',
+    'Background style' => 'Style d’arrière-plan',
 
     #: config/variation/noviusos_bootstrap_customisable.config.php:669
-    'Jumbotron (large call-out)' => 'Jumbotron',
+    'Jumbotron (large call-out)' => 'Jumbotron (bloc d’introduction)',
 
     #: config/variation/noviusos_bootstrap_customisable.config.php:677
     'Additional CSS (Global)' => 'CSS additionnel (Global)',
@@ -163,14 +163,14 @@ return array(
     'Website title' => 'Titre du site',
 
     #: config/variation/noviusos_bootstrap_customisable.config.php:706
-    'Baseline' => 'Phrase d\'accroche',
+    'Baseline' => 'Phrase d’accroche',
 
     #: config/variation/noviusos_bootstrap_customisable.config.php:714
     #: config/variation/noviusos_bootstrap_customisable.config.php:718
     'Logo' => 'Logo',
 
     #: config/variation/noviusos_bootstrap_customisable.config.php:728
-    'Fixed bar' => 'Fixer la barre d\'en tête',
+    'Fixed bar' => 'Fixer la barre d’en tête',
 
     #: config/variation/noviusos_bootstrap_customisable.config.php:739
     'Title' => 'Titre',
@@ -247,13 +247,13 @@ return array(
     'Github link' => 'Lien Github',
 
     #: views/admin/grid.view.php:44
-    'Add an element' => 'Ajouter un élément',
+    'Add an area' => 'Ajouter une zone',
 
     #: views/admin/grid.view.php:45
     'Remove' => 'Supprimer',
 
     #: views/admin/grid.view.php:46
-    'Empty' => 'Vide',
+    'Empty' => 'Vider',
 
     #: views/admin/javascript.view.php:17
     'Delete' => 'Effacer',
