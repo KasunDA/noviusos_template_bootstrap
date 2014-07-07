@@ -16,9 +16,9 @@ $content = (string) View::forge($content['view'], $view_params + $content['param
 
 \Nos\I18n::current_dictionary('noviusos_template_bootstrap::common', 'nos::common');
 
-$js = 'static/apps/noviusos_template_bootstrap/js/admin/grid.js';
+$js = 'static/apps/noviusos_template_bootstrap/js/admin/grid';
 if (\Config::get('novius-os.assets_minified', true)) {
-    $js = 'static/apps/noviusos_template_bootstrap/js/admin/grid.min.js';
+    $js = 'static/apps/noviusos_template_bootstrap/js/admin/grid.min';
 }
 ?>
 

@@ -19,9 +19,9 @@ $data = array(
         'editPanelName' => __('Edit name'),
     ),
 );
-$js = 'static/apps/noviusos_template_bootstrap/js/admin/layout.js';
+$js = 'static/apps/noviusos_template_bootstrap/js/admin/layout';
 if (\Config::get('novius-os.assets_minified', true)) {
-    $js = 'static/apps/noviusos_template_bootstrap/js/admin/layout.min.js';
+    $js = 'static/apps/noviusos_template_bootstrap/js/admin/layout.min';
 }
 ?>
 <script type="text/javascript">
