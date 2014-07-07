@@ -146,7 +146,7 @@
                     width: width,
                     minHeight: height,
                     buttons: [
-                        { text: 'Ok',
+                        { text: 'OK',
                             click: function () {
                                 $div.nosDialog('close');
                             }
