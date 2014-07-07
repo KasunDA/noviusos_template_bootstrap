@@ -1,18 +1,17 @@
 <?php
 
-// Generated on 30/06/2014 14:54:18
+// Generated on 07/07/2014 11:51:57
 
 // 57 out of 57 messages are translated (100%).
-// 110 out of 110 words are translated (100%).
+// 108 out of 108 words are translated (100%).
 
 return array(
     #. option : true ,false
     #: config/template.config.php:33
     'Hello world!' => 'Bonjour tout le monde',
 
-    #. option : true ,false
-    #: config/template.config.php:76
-    'Lorem ipsum' => '',
+    #: config/template.config.php:36
+    'Learn more' => 'En savoir plus',
 
     #. option : true ,false
     #: config/template.config.php:82
@@ -52,6 +51,7 @@ return array(
     #: config/variation/noviusos_bootstrap_customisable.config.php:459
     #: config/variation/noviusos_bootstrap_customisable.config.php:477
     #: config/variation/noviusos_bootstrap_customisable.config.php:495
+    #: config/variation/noviusos_bootstrap_customisable.config.php:850
     #: config/variation/noviusos_bootstrap_customisable.config.php:1129
     'Panel' => 'Panneau',
 
@@ -211,9 +211,6 @@ return array(
     #: config/variation/noviusos_bootstrap_customisable.config.php:1128
     'Add a component' => 'Ajouter un composant',
 
-    #: config/variation/noviusos_bootstrap_customisable.config.php:850
-    'Panel ' => '',
-
     #: config/variation/noviusos_bootstrap_customisable.config.php:869
     #: config/variation/noviusos_bootstrap_customisable.config.php:892
     #: config/variation/noviusos_bootstrap_customisable.config.php:915
@@ -233,6 +230,16 @@ return array(
     #: config/variation/noviusos_bootstrap_customisable.config.php:1017
     #: config/variation/noviusos_bootstrap_customisable.config.php:1298
     'Facebook link' => 'Lien Facebook',
+
+    #: config/variation/noviusos_bootstrap_customisable.config.php:1021
+    #: config/variation/noviusos_bootstrap_customisable.config.php:1029
+    #: config/variation/noviusos_bootstrap_customisable.config.php:1037
+    #: config/variation/noviusos_bootstrap_customisable.config.php:1045
+    #: config/variation/noviusos_bootstrap_customisable.config.php:1302
+    #: config/variation/noviusos_bootstrap_customisable.config.php:1310
+    #: config/variation/noviusos_bootstrap_customisable.config.php:1318
+    #: config/variation/noviusos_bootstrap_customisable.config.php:1326
+    'UserName' => 'Utilisateur',
 
     #: config/variation/noviusos_bootstrap_customisable.config.php:1025
     #: config/variation/noviusos_bootstrap_customisable.config.php:1306
@@ -264,7 +271,7 @@ return array(
     #: views/admin/javascript.view.php:19
     'Edit name' => 'Modifier le nom',
 
-    #: classes/controller/admin/visualise.ctrl.php:39
-    'Lorem Ipsum' => '',
+    #: views/bootstrap/inline_admin.view.php:17
+    'OK' => 'OK',
 
 );
