@@ -41,7 +41,7 @@ if (\Config::get('novius-os.assets_minified', true)) {
     </div>
     <div class="template-e-grid" style="margin-top: 20px ;display: inline-block; vertical-align: top; ">
         <div id="div_option" style="position : relative ;display: inline-block;">
-            <button type="button" id="btn_ajout"><?= __('Add an element') ?></button>
+            <button type="button" id="btn_ajout"><?= __('Add an area') ?></button>
             <button type="button" id="btn_suppr"><?= __('Remove') ?></button>
             <button type="button" id="btn_vider"><?= __('Empty') ?></button>
             <br><br>
