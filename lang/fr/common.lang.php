@@ -145,7 +145,7 @@ return array(
     'Jumbotron (large call-out)' => 'Jumbotron',
 
     #: config/variation/noviusos_bootstrap_customisable.config.php:677
-    'Additional CSS (Global)' => 'CSS additionnel (Globale)',
+    'Additional CSS (Global)' => 'CSS additionnel (Global)',
 
     #: config/variation/noviusos_bootstrap_customisable.config.php:687
     'Type' => 'Type',
