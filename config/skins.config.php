@@ -11,9 +11,9 @@
 
 return array(
     'Amelia' => 'static/apps/noviusos_template_bootstrap/vendor/bootstrap/css/skin/Amelia.css',
+    'Bootstrap' => 'static/apps/noviusos_template_bootstrap/vendor/bootstrap/css/skin/Bootstrap.css',
     'Cerulean' => 'static/apps/noviusos_template_bootstrap/vendor/bootstrap/css/skin/Cerulean.css',
     'Custom' => 'static/apps/noviusos_template_bootstrap/vendor/bootstrap/css/skin/Custom.css',
-    'Cyborg' => 'static/apps/noviusos_template_bootstrap/vendor/bootstrap/css/skin/Cyborg.css',
     'Maestro' => 'static/apps/noviusos_template_bootstrap/vendor/bootstrap/css/skin/Maestro.css',
     'Marine' => 'static/apps/noviusos_template_bootstrap/vendor/bootstrap/css/skin/Marine.css',
     'Mineral' => 'static/apps/noviusos_template_bootstrap/vendor/bootstrap/css/skin/Mineral.css',
