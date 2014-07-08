@@ -14,6 +14,7 @@ $params = array(
     'dom_id' => '#'.$dom_id,
     'texts' => array(
         'newPanel' => __('New Panel'),
+        'ok' => __('OK'),
     ),
 );
 $js = 'static/apps/noviusos_template_bootstrap/js/admin/iframe.js';
