@@ -20,11 +20,12 @@ switch ($config['header']['type']) {
         $id_text = 'titleonly';
         $display_img_small = 'none';
         $str_title_small = '<span class="title_small_only">' . $config['header']['title'] . '</span>';
+        $display_title_small = 'inline-block ; padding-top : 20px';
         break;
 
     case 'image':
         $display_title = 'none';
-        $display_title_small = 'none';
+        $display_title_small = 'inline-block';
         break;
 
     case 'both':
@@ -35,9 +36,9 @@ $sitename = $config['header']['title'];
 
 $str_img = '<div id="header-logo" class="image " style="display: ' .
     $display_img . ';" > <img src="' . $config['header']['logo_url'] . '"></div>';
-$str_img_small = '<div id="header-logo-small" class="image_small"> <img src="' .
+$str_img_small = '<div id="header-logo-small" class="image_small" style="display :'.$display_img_small.'"> <img src="' .
     $config['header']['logo_url'] . '"></div>';
-$str_title_small = '<div id="header-title-small" class="title_small">' . $sitename . '</div>';
+$str_title_small = '<div id="header-title-small" class="title_small" style="display :'.$display_title_small.'">' . $sitename . '</div>';
 $str_title = '<div id="header-title" style="display: ' .
     $display_title . ';font-size: 20px;line-height: 20px;">' . $sitename . '</div>';
 $str_baseline = '<div id="header-baseline" style="display: ' .

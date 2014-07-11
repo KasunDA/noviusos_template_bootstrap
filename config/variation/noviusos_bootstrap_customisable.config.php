@@ -11,7 +11,7 @@
 $uniqid = uniqid('template_bootstrap');
 
 $width_wysiwyg = '850px';
-$width_grid = '780px';
+$width_grid = '800px';
 $height_panel = '550';
 $width_image = '650px';
 $width_standard = '500px';

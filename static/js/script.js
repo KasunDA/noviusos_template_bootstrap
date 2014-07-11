@@ -16,6 +16,7 @@ $(document).ready(function(){
     //------------------------ Configuration Visuelle        --------------------------
     //---------------------------------------------------------------------------------
 
+    $('button , input[type="submit"]').addClass("btn btn-default");
 });
 
 function twitter(d,s,id) {

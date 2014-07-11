@@ -10,6 +10,9 @@
 
 return array(
     'name'    => 'Novius OS Bootstrap customisable template',
+    'extends' => array(
+        'noviusos_slideshow'
+    ),
     'version' => '5.0 (Elche)',
     'provider' => array(
         'name' => 'Novius OS',
@@ -33,4 +36,5 @@ return array(
             'module' => '',
         ),
     ),
+
 );

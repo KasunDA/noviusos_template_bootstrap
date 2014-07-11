@@ -12,6 +12,8 @@
 
 $config = \Config::get('noviusos_template_bootstrap::template');
 
+
+
 // cast to array because data can not be initialise
 foreach ((array) $page->template_variation->tpvar_data as $key => $value) {
     if ($key == 'principal-background_style' && $value == '') {
@@ -80,6 +82,8 @@ foreach ((array) $page->template_variation->tpvar_data as $key => $value) {
         }
     } elseif (strstr($key, '-display') != false) {
         $key = str_replace('-', '.', $key);
+        arr::set($config, $key, $value);
+    } else {
         arr::set($config, $key, $value);
     }
 }
@@ -175,8 +179,6 @@ if (\Config::get('novius-os.assets_minified', true)) {
     </script>
 
     <script src="static/apps/noviusos_template_bootstrap/vendor/<?= $template ?>/js/less-1.7.0.min.js"></script>
-    <script
-        src="static/apps/noviusos_template_bootstrap/vendor/<?= $template ?>/js/script.<?= $template ?>.js"></script>
     <script src="<?= $js ?>"></script>
 
     <style>
