@@ -6295,9 +6295,6 @@ nav.navbar {
 .jumbotron {
   border-radius: 4px;
 }
-.container-fluid {
-  padding: 0;
-}
 #optionbar {
   height: 100%;
   position: fixed;
@@ -6305,7 +6302,7 @@ nav.navbar {
   padding: 0;
   z-index: 30;
 }
-#optionbar div.panel {
+#optionbar span.panel {
   height: 100%;
 }
 .nav-logo {
@@ -6314,7 +6311,7 @@ nav.navbar {
   margin-left: 15px;
   z-index: auto;
 }
-.nav-logo div.image {
+.nav-logo span.image {
   display: inline-block;
   background-color: white;
   -webkit-box-shadow: 3px;
@@ -6326,7 +6323,7 @@ nav.navbar {
   border-bottom-right-radius: 5px;
   padding: 20px;
 }
-.nav-logo div.title {
+.nav-logo span.title {
   display: inline-block;
   position: relative;
   top: 60px;
@@ -6517,7 +6514,7 @@ textarea {
   iframe.twitter-timeline {
     display: none;
   }
-  .nav-logo div.title {
+  .nav-logo span.title {
     display: block;
     top: 0px;
   }
