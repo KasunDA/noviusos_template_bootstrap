@@ -49,7 +49,7 @@ if ($config['header']['fixed']) {
     $style_fixed = 'middle-header-fixed';
 }
 ?>
-<div  class="row <?= $style_fixed ?> " style="padding-right: 15px ; padding-left: 15px ; margin : 0">
+<div  class="row <?= $style_fixed ?> ">
     <?php
     echo \View::forge('noviusos_template_bootstrap::bootstrap/side_bar', array(
         'position' => 'left',
@@ -60,7 +60,7 @@ if ($config['header']['fixed']) {
      <div id="middle_content" class="<?= $str_class_content ?>" >
 
         <div class="<?= $str_class_inner_content ?>">
-            <div class="row">
+            <div class="">
 
                 <div id="jumbotron" class="jumbotron customisable"
                      style="display: <?= $config['jumbotron']['display'] ? 'block' : 'none' ?>">

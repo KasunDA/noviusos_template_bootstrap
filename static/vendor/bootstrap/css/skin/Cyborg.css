@@ -6254,6 +6254,19 @@ button.close {
   width: 100%;
   z-index: 40;
 }
+#header-baseline {
+  font-size: 13px;
+}
+#header-title {
+  font-size: 20px;
+  line-height: 20px;
+}
+#header-title-small {
+  padding-top: 20px;
+}
+#header .link-title {
+  margin-top: 3px;
+}
 .middle-header-fixed {
   top: 176px;
   position: relative;
@@ -6282,9 +6295,6 @@ nav.navbar {
 .jumbotron {
   border-radius: 4px;
 }
-.container-fluid {
-  padding: 0;
-}
 #optionbar {
   height: 100%;
   position: fixed;
@@ -6292,16 +6302,16 @@ nav.navbar {
   padding: 0;
   z-index: 30;
 }
-#optionbar div.panel {
+#optionbar span.panel {
   height: 100%;
 }
 .nav-logo {
   position: relative;
-  top: -70px;
+  top: -72px;
   margin-left: 15px;
-  z-index: 10;
+  z-index: auto;
 }
-.nav-logo div.image {
+.nav-logo span.image {
   display: inline-block;
   background-color: white;
   -webkit-box-shadow: 3px;
@@ -6313,7 +6323,7 @@ nav.navbar {
   border-bottom-right-radius: 5px;
   padding: 20px;
 }
-.nav-logo div.title {
+.nav-logo span.title {
   display: inline-block;
   position: relative;
   top: 60px;
@@ -6504,7 +6514,7 @@ textarea {
   iframe.twitter-timeline {
     display: none;
   }
-  .nav-logo div.title {
+  .nav-logo span.title {
     display: block;
     top: 0px;
   }

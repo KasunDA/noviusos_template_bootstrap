@@ -12,7 +12,8 @@
         params = $.extend({
             dom_id: '',
             texts: {
-                newPanel: 'New Panel'
+                newPanel: 'New Panel',
+                ok : 'OK'
             }
         }, params);
 
@@ -146,7 +147,7 @@
                     width: width,
                     minHeight: height,
                     buttons: [
-                        { text: 'OK',
+                        { text: params.texts.ok,
                             click: function () {
                                 $div.nosDialog('close');
                             }

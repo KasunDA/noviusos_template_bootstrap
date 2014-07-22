@@ -13,7 +13,6 @@
 $config = \Config::get('noviusos_template_bootstrap::template');
 
 
-
 // cast to array because data can not be initialise
 foreach ((array) $page->template_variation->tpvar_data as $key => $value) {
     if ($key == 'principal-background_style' && $value == '') {
@@ -116,39 +115,39 @@ if (!isset($config['wysiwyg_layout']) || $config['wysiwyg_layout'] == '') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-<?php
-
-\Config::load('noviusos_template_bootstrap::skins', true);
-$tab_skin = \Config::get('noviusos_template_bootstrap::skins');
-
-$str_skin_name = $config['principal']['skin'];
-
-if ($dom_id) {
-    foreach ($tab_skin as $key => $value) {
-        if ($key == $str_skin_name) {
-            ?>
-            <link title="<?= $key ?>" rel="stylesheet" type="text/css"
-                  href="<?= $value ?>">
-        <?php
-        } else {
-            ?>
-            <link title="<?= $key ?>" rel="alternate stylesheet" type="text/css"
-                  href="<?= $value ?>">
-        <?php
-        }
-    }
-} else {
-    ?>
-    <link title="<?= $tab_skin[$str_skin_name] ?>" rel="stylesheet" type="text/css"
-          href="<?= $tab_skin[$str_skin_name] ?>">
     <?php
-}
 
-$js = 'static/apps/noviusos_template_bootstrap/js/script.js';
-if (\Config::get('novius-os.assets_minified', true)) {
-    $js = 'static/apps/noviusos_template_bootstrap/js/script.min.js';
-}
-?>
+    \Config::load('noviusos_template_bootstrap::skins', true);
+    $tab_skin = \Config::get('noviusos_template_bootstrap::skins');
+
+    $str_skin_name = $config['principal']['skin'];
+
+    if ($dom_id) {
+        foreach ($tab_skin as $key => $value) {
+            if ($key == $str_skin_name) {
+                ?>
+                <link title="<?= $key ?>" rel="stylesheet" type="text/css"
+                      href="<?= $value ?>">
+            <?php
+            } else {
+                ?>
+                <link title="<?= $key ?>" rel="alternate stylesheet" type="text/css"
+                      href="<?= $value ?>">
+            <?php
+            }
+        }
+    } else {
+        ?>
+        <link title="<?= $tab_skin[$str_skin_name] ?>" rel="stylesheet" type="text/css"
+              href="<?= $tab_skin[$str_skin_name] ?>">
+    <?php
+    }
+
+    $js = 'static/apps/noviusos_template_bootstrap/js/script.js';
+    if (\Config::get('novius-os.assets_minified', true)) {
+        $js = 'static/apps/noviusos_template_bootstrap/js/script.min.js';
+    }
+    ?>
     <link rel="stylesheet"
           href="static/apps/noviusos_template_bootstrap/vendor/<?= $template ?>/css/social-buttons-3.css">
 
@@ -197,43 +196,39 @@ if (\Config::get('novius-os.assets_minified', true)) {
         . ($config['principal']['background_fixed_display'] ? "background-attachment : fixed ; " : "") . ' " '
         : '' ?>>
 
-<div id="content" class="col-md-12" style="padding: 0">
+<div id="content" class="container-fluid">
+    <?php
+    $view = \View::forge('noviusos_template_bootstrap::bootstrap/header', array(
+        'template' => $template,
+        'page' => $page,
+        'title' => $title,
+        'wysiwyg' => $wysiwyg,
+        'dom_id' => $dom_id,
+        'current_context' => $page->get_context(),
+    ), false);
+    $view->config = $config;
+    echo $view;
 
-    <div id="content_inner">
-        <?php
-        $view = \View::forge('noviusos_template_bootstrap::bootstrap/header', array(
-            'template' => $template,
-            'page' => $page,
-            'title' => $title,
-            'wysiwyg' => $wysiwyg,
-            'dom_id' => $dom_id,
-            'current_context' => $page->get_context(),
-        ), false);
-        $view->config = $config;
-        echo $view;
+    $view = View::forge('noviusos_template_bootstrap::bootstrap/content', array(
+        'page' => $page,
+        'template' => $template,
+        'title' => $title,
+        'wysiwyg' => $wysiwyg,
+        'dom_id' => $dom_id,
+    ), false);
+    $view->config = $config;
+    echo $view;
 
-        $view = View::forge('noviusos_template_bootstrap::bootstrap/content', array(
-            'page' => $page,
-            'template' => $template,
-            'title' => $title,
-            'wysiwyg' => $wysiwyg,
-            'dom_id' => $dom_id,
-        ), false);
-        $view->config = $config;
-        echo $view;
-
-        $view = View::forge('noviusos_template_bootstrap::bootstrap/footer', array(
-            'page' => $page,
-            'template' => $template,
-            'title' => $title,
-            'wysiwyg' => $wysiwyg,
-            'dom_id' => $dom_id,
-        ), false);
-        $view->config = $config;
-        echo $view;
-        ?>
-    </div>
-</div>
+    $view = View::forge('noviusos_template_bootstrap::bootstrap/footer', array(
+        'page' => $page,
+        'template' => $template,
+        'title' => $title,
+        'wysiwyg' => $wysiwyg,
+        'dom_id' => $dom_id,
+    ), false);
+    $view->config = $config;
+    echo $view;
+    ?>
 </div>
 </body>
 </html>

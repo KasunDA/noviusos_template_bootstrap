@@ -127,7 +127,7 @@ return array(
                     'view' => 'noviusos_template_bootstrap::admin/grid',
                     'params' => array(
                         'id' => 'block-grid',
-                        'popup_title' => __('WYSIWYG area'),
+                        'popup_title' => __('WYSIWYG areas'),
                         'width' => $width_grid,
                         'content' => array(
                             'view' => 'nos::form/fields',

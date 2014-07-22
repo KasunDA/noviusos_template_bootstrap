@@ -8,24 +8,22 @@
  * @link http://www.novius-os.org
  */
 
-$display_img = 'inline-block';
-$display_img_small = 'inline-block';
-$display_title = 'block';
-$display_title_small = 'inline-block';
+$display_img = '';
+$display_img_small = '';
+$display_title = '';
+$display_title_small = '';
 $id_text = 'title';
 
 switch ($config['header']['type']) {
     case 'title':
-        $display_img = 'none';
+        $display_img = 'display : none ;';
         $id_text = 'titleonly';
-        $display_img_small = 'none';
+        $display_img_small = ' display : none';
         $str_title_small = '<span class="title_small_only">' . $config['header']['title'] . '</span>';
-        $display_title_small = 'inline-block ; padding-top : 20px';
         break;
 
     case 'image':
-        $display_title = 'none';
-        $display_title_small = 'inline-block';
+        $display_title = 'display : none';
         break;
 
     case 'both':
@@ -34,15 +32,15 @@ switch ($config['header']['type']) {
 
 $sitename = $config['header']['title'];
 
-$str_img = '<div id="header-logo" class="image " style="display: ' .
-    $display_img . ';" > <img src="' . $config['header']['logo_url'] . '"></div>';
-$str_img_small = '<div id="header-logo-small" class="image_small" style="display :'.$display_img_small.'"> <img src="' .
-    $config['header']['logo_url'] . '"></div>';
-$str_title_small = '<div id="header-title-small" class="title_small" style="display :'.$display_title_small.'">' . $sitename . '</div>';
-$str_title = '<div id="header-title" style="display: ' .
-    $display_title . ';font-size: 20px;line-height: 20px;">' . $sitename . '</div>';
-$str_baseline = '<div id="header-baseline" style="display: ' .
-    $display_title . ';font-size: 13px;">' . $config['header']['baseline'] . '</div>';
+$str_img = '<span id="header-logo" class="image " style="' .
+    $display_img . '" > <img src="' . $config['header']['logo_url'] . '"></span>';
+$str_img_small = '<span id="header-logo-small" class="image_small" style="' . $display_img_small . '"> <img src="' .
+    $config['header']['logo_url'] . '"></span>';
+$str_title_small = '<span id="header-title-small" class="title_small" style="' . $display_title_small . '">' . $sitename . '</span>';
+$str_title = '<span id="header-title" style="' .
+    $display_title . '">' . $sitename . '</span>';
+$str_baseline = '<span id="header-baseline" style="' .
+    $display_title . '">' . $config['header']['baseline'] . '</span>';
 
 $top = '-50px';
 
@@ -76,11 +74,9 @@ if ($config['header']['fixed']) {
     $style_fixed = 'header-fixed';
 }
 ?>
-<div class="head_content <?= $style_fixed ?>">
+<div class="head_content row <?= $style_fixed ?>">
     <nav class="navbar navbar-inverse " role="navigation">
-
         <div class="navbar-header">
-
             <a class="navbar-brand" id="sitename"
                href="<?= \Nos\Tools_Url::context(\Nos\Nos::main_controller()->getPage()->get_context()) ?>"
                 ><?= $str_img_small ?><?= $str_title_small ?></a>
@@ -110,13 +106,13 @@ if ($config['header']['fixed']) {
         </div>
 
     </nav>
-    <div id="header" class="nav-logo customisable title_header" style="top :<?= $top ?> ; z-index: auto ;">
-        <a href="#" style="display: inline-block;">
-            <?= $str_img ?>
-            <div class="<?= $id_text ?>">
-                <?= $str_title ?>
-                <?= $str_baseline ?>
-            </div>
+    <div id="header" class="nav-logo customisable title_header">
+        <a href="#" style="display: inline-block;"><?= $str_img ?><a/>
+
+            <span class="<?= $id_text ?>">
+                 <a class="link-title" href="#" style="display: inline-block;"><?= $str_title ?><br>
+                     <?= $str_baseline ?></a>
+            </span>
         </a>
     </div>
 </div>

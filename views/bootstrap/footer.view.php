@@ -14,7 +14,7 @@ if ($config['header']['fixed']) {
     $style_fixed = "middle-header-fixed";
 }
 ?>
-<div id="footer" class="col-md-12 col-sm-12 col-xs-12 footer customisable <?= $style_fixed ?>">
+<div id="footer" class="row footer customisable <?= $style_fixed ?>">
     <div class="footer_menu">
 <?php
 $result="";
