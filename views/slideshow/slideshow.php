@@ -7,14 +7,24 @@
  *             http://www.gnu.org/licenses/agpl-3.0.html
  * @link http://www.novius-os.org
  */
+
+$libs = array('js.jquery', 'js.bootstrap', 'css.bootstrap');
+foreach ($libs as $lib) {
+    $lib_url = \Arr::get($config, $lib, null);
+    if (empty($lib_url)) {
+        continue;
+    }
+    if (substr($lib, 0, 2) === 'js') {
+        \Nos\Nos::main_controller()->addJavascript($lib_url, true);
+    } else {
+        \Nos\Nos::main_controller()->addCss($lib_url);
+
+    }
+}
+
+\Nos\Nos::main_controller()->addJavascriptInline(\View::forge('noviusos_template_bootstrap::slideshow/javascript'));
+
 ?>
-<script>
-    $(document).ready(function(){
-        (".carousel").carousel();
-    });
-
-</script>
-
 
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
@@ -35,8 +45,6 @@
         <?php
         $i = 0;
         foreach ($slideshow->images as $key => $image) {
-
-
             if (empty($image->medias->image)) {
                 continue;
             }
