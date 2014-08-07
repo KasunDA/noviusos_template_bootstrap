@@ -58,7 +58,9 @@ if ($config['header']['fixed']) {
     ), false);
     ?>
      <div id="middle_content" class="<?= $str_class_content ?>" >
-    <?php if ($config['jumbotron']['display']) { ?>
+    <?php 
+    if ($config['jumbotron']['display']) { 
+    ?>
         <div class="<?= $str_class_inner_content ?>">
             <div class="">
 
@@ -73,7 +75,9 @@ if ($config['header']['fixed']) {
             </div>
 
         </div>
-    <?php } // $config['jumbotron']['display'] ?>
+    <?php
+    } // $config['jumbotron']['display'] 
+    ?>
         <div id="block-grid" class=" customisable col-md-12 col-sm-12 col-xs-12 main_wysiwyg"><h1 id="pagename"><?= $title ?></h1>
             <div id="grid_content_layout">
             <?php
