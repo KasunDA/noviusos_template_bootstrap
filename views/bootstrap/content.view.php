@@ -58,12 +58,13 @@ if ($config['header']['fixed']) {
     ), false);
     ?>
      <div id="middle_content" class="<?= $str_class_content ?>" >
-
+    <?php 
+    if ($config['jumbotron']['display']) { 
+    ?>
         <div class="<?= $str_class_inner_content ?>">
             <div class="">
 
-                <div id="jumbotron" class="jumbotron customisable"
-                     style="display: <?= $config['jumbotron']['display'] ? 'block' : 'none' ?>">
+                <div id="jumbotron" class="jumbotron customisable">
                     <div class="container">
                         <h1><?= $config['jumbotron']['title'] ?></h1>
                         <span><?= \Nos\Tools_Wysiwyg::parse($config['jumbotron']['content'])?></span>
@@ -74,6 +75,9 @@ if ($config['header']['fixed']) {
             </div>
 
         </div>
+    <?php
+    } // $config['jumbotron']['display'] 
+    ?>
         <div id="block-grid" class=" customisable col-md-12 col-sm-12 col-xs-12 main_wysiwyg"><h1 id="pagename"><?= $title ?></h1>
             <div id="grid_content_layout">
             <?php
