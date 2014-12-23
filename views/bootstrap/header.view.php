@@ -107,7 +107,7 @@ if ($config['header']['fixed']) {
 
     </nav>
     <div id="header" class="nav-logo customisable title_header">
-        <a href="#" style="display: inline-block;"><?= $str_img ?><a/>
+        <a href="#" style="display: inline-block;"><?= $str_img ?></a>
 
             <span class="<?= $id_text ?>">
                  <a class="link-title" href="#" style="display: inline-block;"><?= $str_title ?><br>
